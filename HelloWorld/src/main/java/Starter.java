@@ -4,7 +4,7 @@
  * Created by hakdogan on 10.07.2018
  */
 
-import com.kodcu.verticle.HelloWorldVerticle;
+import com.kodcu.hw.verticle.HelloWorldVerticle;
 import io.vertx.core.Vertx;
 import lombok.extern.slf4j.Slf4j;
 

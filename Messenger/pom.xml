@@ -7,13 +7,13 @@
         <groupId>kodcu</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>helloWorld</artifactId>
+    <artifactId>messenger</artifactId>
 
     <properties>
-        <main.verticle>com.kodcu.hw.verticle.HelloWorldVerticle</main.verticle>
-        <jar.name>helloWorldVerticle</jar.name>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <main.verticle>com.kodcu.messenger.verticle.MessengerLauncher</main.verticle>
+        <jar.name>messengerLauncher</jar.name>
     </properties>
 
 </project>

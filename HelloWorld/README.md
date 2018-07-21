@@ -1,4 +1,5 @@
 # HelloWorld
+This simple application shows how to create an HTTP server and how to write to response.
 
 ## Requirements
 * JDK 8 or later

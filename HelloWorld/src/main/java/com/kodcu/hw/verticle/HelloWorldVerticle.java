@@ -1,4 +1,4 @@
-package com.kodcu.verticle;
+package com.kodcu.hw.verticle;
 
 /*
  * Created by hakdogan on 10.07.2018
