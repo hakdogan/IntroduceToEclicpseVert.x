@@ -4,4 +4,5 @@ This repository contains the code of Vert.x examples contained in my articles pu
 
 These articles are:
 
-* [Introduce to Eclicpse Vert.x](https://medium.com/@hakdogan/introduce-to-eclicpse-vert-x-1d24c97643c7)
+* [Introduce to Eclipse Vert.x](https://medium.com/@hakdogan/introduce-to-eclicpse-vert-x-1d24c97643c7)
+* [Working with multiple Verticles and communication between them in Vert.x](https://medium.com/@hakdogan/working-with-multiple-verticles-and-communication-between-them-in-vert-x-2ed07e8e6425)

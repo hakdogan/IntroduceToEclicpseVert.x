@@ -54,3 +54,5 @@ Or
 ```
 sh run.sh
 ```
+
+![](images/vertx.gif)
