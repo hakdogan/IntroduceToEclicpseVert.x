@@ -27,6 +27,9 @@
     <modules>
         <module>HelloWorld</module>
         <module>Messenger</module>
+        <module>Sender</module>
+        <module>Receiver</module>
+        <module>Util</module>
     </modules>
 
     <dependencies>

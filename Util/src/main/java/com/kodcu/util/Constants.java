@@ -1,7 +1,7 @@
 package com.kodcu.util;
 
 /*
- * Created by hakdogan on 18.07.2018
+ * Created by hakdogan on 27.07.2018
  */
 
 public class Constants {
