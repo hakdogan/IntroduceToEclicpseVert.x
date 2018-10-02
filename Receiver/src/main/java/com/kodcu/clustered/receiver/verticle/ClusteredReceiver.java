@@ -16,10 +16,7 @@ public class ClusteredReceiver extends AbstractVerticle {
     @Override
     public void start(Future<Void> startFuture) throws Exception {
         final EventBus eventBus = vertx.eventBus();
-        eventBus.consumer(ADDRESS, receivedMessage -> {
-            log.debug("Received message: {} ", receivedMessage.body());
-        });
-
+        eventBus.consumer(ADDRESS, receivedMessage -> log.debug("Received message: {} ", receivedMessage.body()));
         log.info("Receiver ready!");
     }
 }

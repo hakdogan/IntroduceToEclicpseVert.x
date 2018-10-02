@@ -16,8 +16,8 @@ public class Starter {
 
     public static void main(String[] args){
 
-        ClusterManager mgr = new HazelcastClusterManager();
-        VertxOptions options = new VertxOptions().setClusterManager(mgr);
+        final ClusterManager mgr = new HazelcastClusterManager();
+        final VertxOptions options = new VertxOptions().setClusterManager(mgr);
         Vertx.clusteredVertx(options, cluster -> {
             if (cluster.succeeded()) {
                 cluster.result().deployVerticle(new ClusteredReceiver(), res -> {

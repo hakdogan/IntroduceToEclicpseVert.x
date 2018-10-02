@@ -30,6 +30,8 @@
         <module>Sender</module>
         <module>Receiver</module>
         <module>Util</module>
+        <module>WorkerVerticle</module>
+        <module>Helper</module>
     </modules>
 
     <dependencies>

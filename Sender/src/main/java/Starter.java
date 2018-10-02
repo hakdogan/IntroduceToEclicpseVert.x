@@ -15,8 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 public class Starter {
 
     public static void main(String[] args){
-        ClusterManager mgr = new HazelcastClusterManager();
-        VertxOptions options = new VertxOptions().setClusterManager(mgr);
+        final ClusterManager mgr = new HazelcastClusterManager();
+        final VertxOptions options = new VertxOptions().setClusterManager(mgr);
         Vertx.clusteredVertx(options, cluster -> {
             if (cluster.succeeded()) {
                 cluster.result().deployVerticle(new ClusteredSender(), res -> {

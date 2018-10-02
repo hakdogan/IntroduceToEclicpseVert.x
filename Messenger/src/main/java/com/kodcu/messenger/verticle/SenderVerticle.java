@@ -4,6 +4,7 @@ package com.kodcu.messenger.verticle;
  * Created by hakdogan on 18.07.2018
  */
 
+import com.kodcu.helper.HttpServerHelper;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.eventbus.EventBus;
@@ -16,7 +17,6 @@ import static com.kodcu.util.Constants.*;
 @Slf4j
 public class SenderVerticle extends AbstractVerticle {
 
-    private final int HTTP_PORT = 8080;
     /**
      *
      * @param future
@@ -30,18 +30,8 @@ public class SenderVerticle extends AbstractVerticle {
             HttpServerResponse response = routingContext.response();
             response.putHeader("content-type", "text/html").end("<h1>Hello from non-clustered messenger example!</h1>");
         });
-        router.post("/send/:message").handler(this::sendMessage);
-
-        vertx.createHttpServer().requestHandler(router::accept)
-                .listen(config().getInteger("http.server.port", HTTP_PORT), result -> {
-                    if (result.succeeded()) {
-                        log.info("HTTP server running on port {} ", HTTP_PORT);
-                        future.complete();
-                    } else {
-                        log.error("Could not start a HTTP server", result.cause());
-                        future.fail(result.cause());
-                    }
-                });
+        router.post("/send/:" + PATH_PARAM_TO_RECEIVE_MESSAGE).handler(this::sendMessage);
+        HttpServerHelper.createAnHttpServer(vertx, router, config(), future);
     }
 
     /**
@@ -50,7 +40,7 @@ public class SenderVerticle extends AbstractVerticle {
      */
     private void sendMessage(RoutingContext routingContext){
         final EventBus eventBus = vertx.eventBus();
-        final String message = routingContext.request().getParam(PATH_PARAM);
+        final String message = routingContext.request().getParam(PATH_PARAM_TO_RECEIVE_MESSAGE);
 
         eventBus.send(ADDRESS, message, reply -> {
             if (reply.succeeded()) {

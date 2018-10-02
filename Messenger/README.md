@@ -1,5 +1,5 @@
 # Messenger
-This example shows the use of 2 vertices communicating with each other. The messages you send with the `HTTP Post` requests over `the http://localhost:8080/send/:message` are forwarded to the receiver verticle.
+This example shows the use of 2 verticles communicating with each other. The messages you send with the `HTTP Post` requests over `the http://localhost:8080/send/:message` are forwarded to the receiver verticle.
 
 ## Sender
 ```java

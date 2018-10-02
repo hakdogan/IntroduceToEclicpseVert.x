@@ -5,7 +5,13 @@ package com.kodcu.util;
  */
 
 public class Constants {
-    public final static String PATH_PARAM            = "message";
-    public final static String ADDRESS               = "kodcu.com";
-    public final static String DEFAULT_REPLY_MESSAGE = "message received";
+    public static final int DEFAULT_HTTP_PORT = 8080;
+    public static final int DEFAULT_WORKER_POOL_SIZE = 100;
+    public static final String PATH_PARAM_TO_RECEIVE_MESSAGE = "message";
+    public static final String PATH_PARAM_TO_SAVE_WORD = "word";
+    public static final String ADDRESS = "kodcu.com";
+    public static final String DEFAULT_REPLY_MESSAGE = "message received";
+    public static final String FILE_PATH_AND_NAME = "WorkerVerticle/src/main/resources/word.txt";
+
+    private Constants() {}
 }
