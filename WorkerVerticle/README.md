@@ -3,22 +3,16 @@
 This example shows the use of `worker verticle`. A word you send with the `HTTP Post` request over the `http://localhost:8080/get/:message` is saved to a text file that's located under `recources` directory.
                                                  
 ```java
-/**
-     *
-     * @param routingContext
-     */
-    private void saveWord(RoutingContext routingContext) {
-        final String message = routingContext.request().getParam(PATH_PARAM_TO_SAVE_WORD);
-        try {
-            final BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH_AND_NAME));
-            writer.write(message);
-            writer.close();
-            log.info("The word was written: {} ", message);
-            routingContext.response().end(message);
-        } catch (Exception ex) {
-            log.error("Failed to save word {} ", ex);
-        }
-    }
+   final Vertx vertx = Vertx.vertx();
+        final DeploymentOptions options = new DeploymentOptions().setWorker(true)
+                .setWorkerPoolSize(DEFAULT_WORKER_POOL_SIZE);
+        vertx.deployVerticle(new WorkerVerticle(), options, res -> {
+            if (res.succeeded()) {
+                log.info("Deployment id is: " + res.result());
+            } else {
+                log.info("Deployment failed!");
+            }
+        });
 ```
 
 ## Requirements
@@ -32,8 +26,9 @@ mvn celan install
 
 ## To run
 ```
-java -jar WorkerVerticle/target/workerVerticleLauncher.jar
+java -jar WorkerVerticle/target/workerVerticleLauncher.jar -worker
 ```
+
 Or
 
 ```
