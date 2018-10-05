@@ -25,7 +25,7 @@ public class ClusteredSender extends AbstractVerticle {
             HttpServerResponse response = routingContext.response();
             response.putHeader("content-type", "text/html").end("<h1>Hello from clustered messenger example!</h1>");
         });
-        router.post("/send/:" + PATH_PARAM_TO_RECEIVE_MESSAGE).handler(this::sendMessage);
+        router.post("/sendForAll/:" + PATH_PARAM_TO_RECEIVE_MESSAGE).handler(this::sendMessageForAllReceivers);
         HttpServerHelper.createAnHttpServer(vertx, router, config(), future);
     }
 
@@ -33,7 +33,7 @@ public class ClusteredSender extends AbstractVerticle {
      *
      * @param routingContext
      */
-    private void sendMessage(RoutingContext routingContext){
+    private void sendMessageForAllReceivers(RoutingContext routingContext){
         final EventBus eventBus = vertx.eventBus();
         final String message = routingContext.request().getParam(PATH_PARAM_TO_RECEIVE_MESSAGE);
 

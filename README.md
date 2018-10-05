@@ -1,5 +1,7 @@
 # Introduce to Eclicpse Vert.x
 
+![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hakdogan_IntroduceToEclicpseVert.x&metric=alert_status)
+![Code Coverage](https://sonarcloud.io/api/project_badges/measure?project=hakdogan_IntroduceToEclicpseVert.x&metric=coverage)
 This repository contains the code of Vert.x examples contained in my articles published on platforms such as [kodcu.com](https://kodcu.com/author/hakdogan/), [medium](https://medium.com/@hakdogan), [dzone](https://dzone.com/users/1161493/hakdogan.html). How to run each example is described in its readme file.
 
 These articles are:

@@ -1,3 +1,5 @@
+package com.kodcu.main;
+
 import com.kodcu.wv.verticle.WorkerVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;

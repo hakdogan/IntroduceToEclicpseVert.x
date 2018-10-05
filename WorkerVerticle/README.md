@@ -26,7 +26,7 @@ mvn celan install
 
 ## To run
 ```
-java -jar WorkerVerticle/target/workerVerticleLauncher.jar -worker
+java -jar target/workerVerticleLauncher.jar -worker
 ```
 
 Or

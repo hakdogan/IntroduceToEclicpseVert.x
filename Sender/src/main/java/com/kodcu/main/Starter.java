@@ -1,10 +1,10 @@
-
+package com.kodcu.main;
 
 /*
- * Created by hakdogan on 27.07.2018
+ * Created by hakdogan on 26.07.2018
  */
 
-import com.kodcu.clustered.receiver.verticle.ClusteredReceiver;
+import com.kodcu.clustered.sender.verticle.ClusteredSender;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
 import io.vertx.core.spi.cluster.ClusterManager;
@@ -15,12 +15,11 @@ import lombok.extern.slf4j.Slf4j;
 public class Starter {
 
     public static void main(String[] args){
-
         final ClusterManager mgr = new HazelcastClusterManager();
         final VertxOptions options = new VertxOptions().setClusterManager(mgr);
         Vertx.clusteredVertx(options, cluster -> {
             if (cluster.succeeded()) {
-                cluster.result().deployVerticle(new ClusteredReceiver(), res -> {
+                cluster.result().deployVerticle(new ClusteredSender(), res -> {
                     if(res.succeeded()){
                         log.info("Deployment id is: " + res.result());
                     } else {
