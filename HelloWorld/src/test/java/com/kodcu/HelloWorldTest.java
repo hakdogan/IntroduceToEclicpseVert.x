@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static com.kodcu.util.Constants.*;
 
 /**
  * @author hakdogan (hakdogan@kodcu.com)
@@ -19,8 +20,6 @@ import org.junit.runner.RunWith;
 public class HelloWorldTest {
 
     private Vertx vertx;
-    private static final String HOSTNAME = "localhost";
-    private static final int HTTP_PORT = 8080;
 
     @Before
     public void setup(TestContext testContext) {
@@ -36,10 +35,12 @@ public class HelloWorldTest {
     @Test
     public void welcomePageTest(TestContext testContext) {
         final Async async = testContext.async();
-        vertx.createHttpClient().getNow(HTTP_PORT, HOSTNAME, "/",
+        vertx.createHttpClient().getNow(DEFAULT_HTTP_PORT, DEFAULT_HOSTNAME, "/",
                 response -> {
-                    testContext.assertTrue(response.statusMessage().equals("OK"));
-                    async.complete();
+                    response.handler(responseBody -> {
+                        testContext.assertTrue(responseBody.toString().contains("Hello from Vert.x application"));
+                        async.complete();
+                    });
                 });
     }
 }

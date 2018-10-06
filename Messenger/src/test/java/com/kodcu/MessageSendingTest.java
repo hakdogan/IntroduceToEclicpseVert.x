@@ -1,9 +1,7 @@
 package com.kodcu;
 
 import com.kodcu.messenger.verticle.MessengerLauncher;
-import com.kodcu.messenger.verticle.SenderVerticle;
 import io.vertx.core.Vertx;
-import io.vertx.core.json.JsonObject;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
 import io.vertx.ext.unit.junit.VertxUnitRunner;
@@ -12,6 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import static com.kodcu.util.Constants.*;
 
 /**
  * @author hakdogan (hakdogan@kodcu.com)
@@ -22,8 +21,6 @@ import org.junit.runner.RunWith;
 public class MessageSendingTest {
 
     private Vertx vertx;
-    private static final String HOSTNAME = "localhost";
-    private static final int HTTP_PORT = 8080;
 
     @Before
     public void setup(TestContext testContext) {
@@ -39,15 +36,12 @@ public class MessageSendingTest {
     @Test
     public void testSending(TestContext testContext) {
 
-        final String pathParam = "message";
         final Async async = testContext.async();
         final WebClient client = WebClient.create(vertx);
+        final String pathParam = "hello";
 
-        client.post(HTTP_PORT, HOSTNAME, "/send/" + pathParam)
-                .sendJsonObject(new JsonObject()
-                .put("title", "test title")
-                .put("content", "test content")
-                .put("author", "test author"), req -> {
+        client.post(DEFAULT_HTTP_PORT, DEFAULT_HOSTNAME, "/send/" + pathParam)
+                .sendJsonObject(null, req -> {
             if (req.succeeded()) {
                 testContext.assertTrue(req.result().bodyAsString().contains(pathParam));
                 async.complete();

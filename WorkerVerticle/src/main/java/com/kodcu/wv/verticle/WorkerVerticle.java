@@ -7,10 +7,8 @@ import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import lombok.extern.slf4j.Slf4j;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-
 import static com.kodcu.util.Constants.*;
 
 /**
@@ -42,13 +40,17 @@ public class WorkerVerticle extends AbstractVerticle {
      * @param routingContext
      */
     private void saveWord(RoutingContext routingContext) {
+
         final String message = routingContext.request().getParam(PATH_PARAM_TO_SAVE_WORD);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH_AND_NAME))){
+        final ClassLoader classLoader = getClass().getClassLoader();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(classLoader.getResource(FILE_NAME).getFile()))){
             writer.write(message);
             log.info("The word was written: {} ", message);
             routingContext.response().end(message);
         } catch (Exception ex) {
             log.error("Failed to save word {} ", ex);
         }
+
     }
 }
