@@ -34,3 +34,6 @@ Or
 ```
 sh run.sh
 ```
+
+## Relevant article is
+[How to Run Blocking Code in Vert.x](https://medium.com/@hakdogan/how-to-run-blocking-code-in-vert-x-174dad7e0f94)

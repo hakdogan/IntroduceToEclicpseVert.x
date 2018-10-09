@@ -36,3 +36,6 @@ sh run.sh
 ```
 
 ![](images/receiver.png)
+
+## Relevant article is
+[How to Run a Vert.x Cluster With Broadcasting Messaging](https://medium.com/@hakdogan/how-to-run-a-vert-x-cluster-with-broadcasting-messaging-fc79ff113c9c)

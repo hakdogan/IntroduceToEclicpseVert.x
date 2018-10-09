@@ -56,3 +56,6 @@ sh run.sh
 ```
 
 ![](images/vertx.gif)
+
+## Relevant article is
+[How to Work With Multiple Verticles and Communication in Vert.x](https://medium.com/@hakdogan/working-with-multiple-verticles-and-communication-between-them-in-vert-x-2ed07e8e6425)

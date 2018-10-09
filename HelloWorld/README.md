@@ -19,3 +19,6 @@ Or
 ```
 sh run.sh
 ```
+
+## Relevant article is
+[Introduce to Eclipse Vert.x](https://medium.com/@hakdogan/introduce-to-eclicpse-vert-x-1d24c97643c7)

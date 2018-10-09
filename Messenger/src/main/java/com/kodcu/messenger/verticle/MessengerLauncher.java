@@ -4,6 +4,7 @@ package com.kodcu.messenger.verticle;
  * Created by hakdogan on 18.07.2018
  */
 
+import com.kodcu.helper.VerticleDeployHelper;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.CompositeFuture;
 import io.vertx.core.Future;
@@ -18,9 +19,8 @@ public class MessengerLauncher extends AbstractVerticle {
      */
     @Override
     public void start(Future<Void> future){
-
-        CompositeFuture.all(deployHelper(ReceiverVerticle.class.getName()),
-                deployHelper(SenderVerticle.class.getName()))
+        CompositeFuture.all(VerticleDeployHelper.deployHelper(vertx, ReceiverVerticle.class.getName()),
+                VerticleDeployHelper.deployHelper(vertx, SenderVerticle.class.getName()))
                 .setHandler(result -> {
                     if(result.succeeded()){
                         future.complete();
@@ -29,26 +29,4 @@ public class MessengerLauncher extends AbstractVerticle {
                     }
                 });
     }
-
-    /**
-     *
-     * @param name
-     * @return
-     */
-    private Future<Void> deployHelper(String name){
-
-        final Future<Void> future = Future.future();
-        vertx.deployVerticle(name, res -> {
-            if(res.failed()){
-                log.error("Failed to deploy verticle " + name);
-                future.fail(res.cause());
-            } else {
-                log.info("Deployed verticle " + name);
-                future.complete();
-            }
-        });
-
-        return future;
-    }
-
 }

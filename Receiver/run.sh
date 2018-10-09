@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 mvn clean install
-java -jar target/clusteredReceiverLauncher.jar
+java -jar target/clusteredReceiverLauncher.jar -cluster
