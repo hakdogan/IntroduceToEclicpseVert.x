@@ -9,11 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>workerVerticle</artifactId>
+    <artifactId>data-sharing</artifactId>
 
     <properties>
-        <main.verticle>com.kodcu.wv.verticle.WorkerVerticle</main.verticle>
-        <jar.name>workerVerticleLauncher</jar.name>
+        <main.verticle>com.kodcu.lds.verticle.LocalDataSharingAndReaderLauncher</main.verticle>
+        <jar.name>localDataSharingAndReaderLauncher</jar.name>
     </properties>
 
     <dependencies>

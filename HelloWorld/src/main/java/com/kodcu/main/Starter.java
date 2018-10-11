@@ -11,6 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Starter {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args){
         final Vertx vertx = Vertx.vertx();
         vertx.deployVerticle(new HelloWorldVerticle(), res -> {

@@ -14,6 +14,10 @@ import static com.kodcu.util.Constants.DEFAULT_WORKER_POOL_SIZE;
 @Slf4j
 public class Starter {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args){
         final Vertx vertx = Vertx.vertx();
         final DeploymentOptions options = new DeploymentOptions().setWorker(true)

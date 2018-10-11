@@ -18,11 +18,30 @@ public class HttpServerHelper {
 
     private HttpServerHelper() {}
 
+    /**
+     *
+     * @param vertx
+     * @param router
+     * @param config
+     * @param future
+     */
     public static void createAnHttpServer(Vertx vertx, Router router, JsonObject config, Future<Void> future){
+        createAnHttpServer(vertx, router, config, DEFAULT_HTTP_PORT, future);
+    }
+
+    /**
+     *
+     * @param vertx
+     * @param router
+     * @param config
+     * @param port
+     * @param future
+     */
+    public static void createAnHttpServer(Vertx vertx, Router router, JsonObject config, int port, Future<Void> future){
         vertx.createHttpServer().requestHandler(router::accept)
-                .listen(config.getInteger("http.server.port", DEFAULT_HTTP_PORT), result -> {
+                .listen(config.getInteger("http.server.port", port), result -> {
                     if (result.succeeded()) {
-                        log.info("HTTP server running on port {} ", DEFAULT_HTTP_PORT);
+                        log.info("HTTP server running on port {} ", port);
                         future.complete();
                     } else {
                         log.error("Could not start a HTTP server", result.cause());
@@ -31,4 +50,6 @@ public class HttpServerHelper {
                 });
 
     }
+
+
 }

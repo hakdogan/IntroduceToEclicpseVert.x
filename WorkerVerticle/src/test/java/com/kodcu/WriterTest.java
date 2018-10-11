@@ -23,17 +23,29 @@ public class WriterTest {
 
     private Vertx vertx;
 
+    /**
+     *
+     * @param testContext
+     */
     @Before
     public void setup(TestContext testContext) {
         vertx = Vertx.vertx();
         vertx.deployVerticle(WorkerVerticle.class.getName(), testContext.asyncAssertSuccess());
     }
 
+    /**
+     *
+     * @param testContext
+     */
     @After
     public void tearDown(TestContext testContext) {
         vertx.close(testContext.asyncAssertSuccess());
     }
 
+    /**
+     *
+     * @param testContext
+     */
     @Test
     public void httpServerTest(TestContext testContext) {
         final Async async = testContext.async();
@@ -46,6 +58,10 @@ public class WriterTest {
                 });
     }
 
+    /**
+     *
+     * @param testContext
+     */
     @Test
     public void writingTest(TestContext testContext){
 

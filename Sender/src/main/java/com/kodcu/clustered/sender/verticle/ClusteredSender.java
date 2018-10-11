@@ -17,6 +17,11 @@ import static com.kodcu.util.Constants.*;
 @Slf4j
 public class ClusteredSender extends AbstractVerticle {
 
+    /**
+     *
+     * @param future
+     * @throws Exception
+     */
     @Override
     public void start(Future<Void> future) throws Exception {
 

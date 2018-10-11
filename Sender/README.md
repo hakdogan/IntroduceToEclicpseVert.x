@@ -23,19 +23,19 @@ This example shows the use of `broadcasting messaging` in the `clustered environ
 * Maven 3.0.0 or later
 
 ## To compile
-```
+```bash
 mvn celan install
 ```
 
 ## To run
-```
+```bash
 java -jar target/clusteredSenderLauncher.jar -cluster
 #For multiple instances java -jar target/clusteredSenderLauncher.jar -cluster -instances 2
 
 ```
 Or
 
-```
+```bash
 sh run.sh
 ```
 

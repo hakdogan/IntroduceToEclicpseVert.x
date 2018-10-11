@@ -6,17 +6,17 @@ This simple application shows how to create an HTTP server and how to write to r
 * Maven 3.0.0 or later
 
 ## To compile
-```
+```bash
 mvn celan install
 ```
 
 ## To run
-```
+```bash
 java -jar target/helloWorldVerticle.jar
 ```
 Or
 
-```
+```bash
 sh run.sh
 ```
 

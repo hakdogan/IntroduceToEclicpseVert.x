@@ -1,7 +1,9 @@
 package com.kodcu;
 
-import com.kodcu.clustered.sender.verticle.ClusteredSender;
+import com.kodcu.entity.Data;
+import com.kodcu.lds.verticle.LocalDataSharingAndReaderLauncher;
 import io.vertx.core.Vertx;
+import io.vertx.core.json.JsonObject;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
 import io.vertx.ext.unit.junit.VertxUnitRunner;
@@ -16,13 +18,14 @@ import static com.kodcu.util.Constants.DEFAULT_HTTP_PORT;
 
 /**
  * @author hakdogan (hakdogan@kodcu.com)
- * Created on 9.10.2018
+ * Created on 11.10.2018
  */
 
 @RunWith(VertxUnitRunner.class)
-public class SenderTest {
+public class SharingAndReadingTest {
 
     private Vertx vertx;
+    private Data data = new Data("key1", "value1");
 
     /**
      *
@@ -31,7 +34,7 @@ public class SenderTest {
     @Before
     public void setup(TestContext testContext) {
         vertx = Vertx.vertx();
-        vertx.deployVerticle(ClusteredSender.class.getName(), testContext.asyncAssertSuccess());
+        vertx.deployVerticle(LocalDataSharingAndReaderLauncher.class.getName(), testContext.asyncAssertSuccess());
     }
 
     /**
@@ -48,18 +51,30 @@ public class SenderTest {
      * @param testContext
      */
     @Test
-    public void sendingMessageTest(TestContext testContext) {
-
+    public void putAndReadTest(TestContext testContext){
         final Async async = testContext.async();
         final WebClient client = WebClient.create(vertx);
-        final String pathParam = "hello";
-
-        client.post(DEFAULT_HTTP_PORT, DEFAULT_HOSTNAME, "/sendForAll//" + pathParam)
-                .sendJsonObject(null, req -> {
+        client.post(DEFAULT_HTTP_PORT, DEFAULT_HOSTNAME, "/put")
+                .sendJsonObject(new JsonObject().mapFrom(data), req -> {
                     if (req.succeeded()) {
-                        testContext.assertTrue(req.result().bodyAsString().contains(pathParam));
+                        testContext.assertTrue(req.result().bodyAsString().contains(data.getKey()));
+                        readTest(testContext);
                         async.complete();
                     }
                 });
     }
+
+    /**
+     *
+     * @param testContext
+     */
+    private void readTest(TestContext testContext){
+        vertx.createHttpClient().getNow(8081, DEFAULT_HOSTNAME, "/read",
+                response -> {
+                    response.handler(responseBody -> {
+                        testContext.assertTrue(responseBody.toString().contains(data.getValue()));
+                    });
+                });
+    }
+
 }

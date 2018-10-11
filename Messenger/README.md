@@ -41,17 +41,17 @@ This example shows the use of 2 verticles communicating with each other. The mes
 * Maven 3.0.0 or later
 
 ## To compile
-```
+```bash
 mvn celan install
 ```
 
 ## To run
-```
+```bash
 java -jar target/messengerLauncher.jar
 ```
 Or
 
-```
+```bash
 sh run.sh
 ```
 

@@ -13,6 +13,7 @@ public class Constants {
     public static final String ADDRESS = "kodcu.com";
     public static final String DEFAULT_REPLY_MESSAGE = "message received";
     public static final String FILE_NAME = "word.txt";
+    public static final String DEFAULT_LOCAL_MAP_NAME = "myLocalMap";
 
     private Constants() {}
 }

@@ -20,18 +20,18 @@ This example shows the use of `worker verticle`. A word you send with the `HTTP 
 * Maven 3.0.0 or later
 
 ## To compile
-```
+```bash
 mvn celan install
 ```
 
 ## To run
-```
+```bash
 java -jar target/workerVerticleLauncher.jar -worker
 ```
 
 Or
 
-```
+```bash
 sh run.sh
 ```
 

@@ -14,6 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Starter {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args){
         final ClusterManager mgr = new HazelcastClusterManager();
         final VertxOptions options = new VertxOptions().setClusterManager(mgr);

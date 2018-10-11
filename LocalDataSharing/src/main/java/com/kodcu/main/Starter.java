@@ -1,11 +1,13 @@
 package com.kodcu.main;
-/*
- * Created by hakdogan on 18.07.2018
- */
 
-import com.kodcu.messenger.verticle.MessengerLauncher;
+import com.kodcu.lds.verticle.LocalDataSharingAndReaderLauncher;
 import io.vertx.core.Vertx;
 import lombok.extern.slf4j.Slf4j;
+
+/**
+ * @author hakdogan (hakdogan@kodcu.com)
+ * Created on 11.10.2018
+ */
 
 @Slf4j
 public class Starter {
@@ -16,7 +18,7 @@ public class Starter {
      */
     public static void main(String[] args){
         final Vertx vertx = Vertx.vertx();
-        vertx.deployVerticle(new MessengerLauncher(), res -> {
+        vertx.deployVerticle(new LocalDataSharingAndReaderLauncher(), res -> {
             if(res.succeeded()){
                 log.info("Deployment id is: " + res.result());
             } else {

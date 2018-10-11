@@ -22,17 +22,29 @@ public class MessageSendingTest {
 
     private Vertx vertx;
 
+    /**
+     *
+     * @param testContext
+     */
     @Before
     public void setup(TestContext testContext) {
         vertx = Vertx.vertx();
         vertx.deployVerticle(MessengerLauncher.class.getName(), testContext.asyncAssertSuccess());
     }
 
+    /**
+     *
+     * @param testContext
+     */
     @After
     public void tearDown(TestContext testContext) {
         vertx.close(testContext.asyncAssertSuccess());
     }
 
+    /**
+     *
+     * @param testContext
+     */
     @Test
     public void testSending(TestContext testContext) {
 

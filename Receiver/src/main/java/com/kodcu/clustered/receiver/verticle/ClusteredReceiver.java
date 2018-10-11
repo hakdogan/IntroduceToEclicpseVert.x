@@ -13,6 +13,11 @@ import static com.kodcu.util.Constants.*;
 @Slf4j
 public class ClusteredReceiver extends AbstractVerticle {
 
+    /**
+     *
+     * @param startFuture
+     * @throws Exception
+     */
     @Override
     public void start(Future<Void> startFuture) throws Exception {
         final EventBus eventBus = vertx.eventBus();

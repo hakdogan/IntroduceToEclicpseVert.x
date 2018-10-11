@@ -9,6 +9,10 @@ import io.vertx.core.Future;
 
 public class HelloWorldVerticle extends AbstractVerticle {
 
+    /**
+     *
+     * @param future
+     */
     @Override
     public void start(Future<Void> future) {
         vertx.createHttpServer().requestHandler(request -> request.response()
