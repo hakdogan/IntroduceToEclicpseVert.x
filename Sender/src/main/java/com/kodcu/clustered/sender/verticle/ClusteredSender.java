@@ -5,6 +5,7 @@ package com.kodcu.clustered.sender.verticle;
  */
 
 import com.kodcu.helper.HttpServerHelper;
+import com.kodcu.helper.RouterHelper;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.eventbus.EventBus;
@@ -24,12 +25,7 @@ public class ClusteredSender extends AbstractVerticle {
      */
     @Override
     public void start(Future<Void> future) throws Exception {
-
-        final Router router = Router.router(vertx);
-        router.route("/").handler(routingContext -> {
-            HttpServerResponse response = routingContext.response();
-            response.putHeader("content-type", "text/html").end("<h1>Hello from clustered messenger example!</h1>");
-        });
+        final Router router = RouterHelper.createRouter(vertx, "Hello from clustered messenger example!");
         router.post("/sendForAll/:" + PATH_PARAM_TO_RECEIVE_MESSAGE).handler(this::sendMessageForAllReceivers);
         HttpServerHelper.createAnHttpServer(vertx, router, config(), future);
     }

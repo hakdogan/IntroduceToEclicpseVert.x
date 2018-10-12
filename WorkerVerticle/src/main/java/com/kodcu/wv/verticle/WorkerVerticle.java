@@ -1,6 +1,7 @@
 package com.kodcu.wv.verticle;
 
 import com.kodcu.helper.HttpServerHelper;
+import com.kodcu.helper.RouterHelper;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.http.HttpServerResponse;
@@ -25,12 +26,7 @@ public class WorkerVerticle extends AbstractVerticle {
      */
     @Override
     public void start(Future<Void> future)  {
-
-        final Router router = Router.router(vertx);
-        router.route("/").handler(routingContext -> {
-            HttpServerResponse response = routingContext.response();
-            response.putHeader("content-type", "text/html").end("<h1>Hello from Worker Verticle example!</h1>");
-        });
+        final Router router = RouterHelper.createRouter(vertx,"Hello from Worker Verticle example!");
         router.post("/get/:" + PATH_PARAM_TO_SAVE_WORD).handler(this::saveWord);
         HttpServerHelper.createAnHttpServer(vertx, router, config(), future);
     }
