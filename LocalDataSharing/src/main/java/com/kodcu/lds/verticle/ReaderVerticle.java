@@ -20,10 +20,9 @@ public class ReaderVerticle extends AbstractVerticle {
     /**
      *
      * @param future
-     * @throws Exception
      */
     @Override
-    public void start(Future<Void> future) throws Exception {
+    public void start(Future<Void> future) {
         final Router router = RouterHelper.createRouter(vertx, "Hello from read data example!");
         router.get("/read").handler(this::readData);
 

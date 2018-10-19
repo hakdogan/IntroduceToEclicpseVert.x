@@ -1,0 +1,75 @@
+package com.kodcu.sdr.verticle;
+
+import com.kodcu.entity.StockExchange;
+import com.kodcu.helper.HttpServerHelper;
+import com.kodcu.helper.PageRenderHelper;
+import io.vertx.core.AbstractVerticle;
+import io.vertx.core.Future;
+import io.vertx.core.json.Json;
+import io.vertx.core.shareddata.AsyncMap;
+import io.vertx.core.shareddata.SharedData;
+import io.vertx.ext.web.Router;
+import io.vertx.ext.web.RoutingContext;
+import lombok.extern.slf4j.Slf4j;
+
+
+import static com.kodcu.util.Constants.*;
+
+/**
+ * @author hakdogan (hakdogan@kodcu.com)
+ * Created on 13.10.2018
+ */
+
+@Slf4j
+public class ReaderVerticle extends AbstractVerticle {
+
+    private StockExchange stockExchange;
+
+    /**
+     *
+     * @param future
+     */
+    @Override
+    public void start(Future<Void> future) {
+        final Router router = Router.router(vertx);
+        router.get("/").handler(this::welcomePage);
+        router.get("/refresh").handler(this::refresh);
+        HttpServerHelper.createAnHttpServer(vertx, router, config(), future);
+    }
+
+    /**
+     *
+     * @param routingContext
+     */
+    private void welcomePage(RoutingContext routingContext){
+        saveExchangeData();
+        PageRenderHelper.pageRender(routingContext, "/index.ftl", HTML_PRODUCE, HTTP_STATUS_CODE_OK);
+    }
+
+    /**
+     *
+     * @param routingContext
+     */
+    private void refresh(RoutingContext routingContext){
+        saveExchangeData();
+        routingContext.response()
+                .putHeader("content-type", "application/json")
+                .setStatusCode(200)
+                .end(Json.encodePrettily(stockExchange));
+    }
+
+    private void saveExchangeData(){
+        SharedData sharedData = vertx.sharedData();
+        sharedData.<String, StockExchange>getAsyncMap(DEFAULT_ASYNC_MAP_NAME, res -> {
+            if (res.succeeded()) {
+                AsyncMap<String, StockExchange> stockExchangeAsyncMap = res.result();
+                stockExchangeAsyncMap.get(DEFAULT_ASYNC_MAP_KEY, asyncDataResult -> {
+                    stockExchange = asyncDataResult.result();
+                    log.debug("Stock Exchange object is {} ", Json.encodePrettily(stockExchange));
+                });
+            } else {
+                log.debug("Something went wrong when access to shared map!");
+            }
+        });
+    }
+}

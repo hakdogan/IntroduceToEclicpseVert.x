@@ -9,7 +9,6 @@ import com.kodcu.helper.RouterHelper;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.eventbus.EventBus;
-import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import lombok.extern.slf4j.Slf4j;
@@ -21,10 +20,9 @@ public class SenderVerticle extends AbstractVerticle {
     /**
      *
      * @param future
-     * @throws Exception
      */
     @Override
-    public void start(Future<Void> future) throws Exception {
+    public void start(Future<Void> future) {
         final Router router = RouterHelper.createRouter(vertx, "Hello from non-clustered messenger example!");
         router.post("/send/:" + PATH_PARAM_TO_RECEIVE_MESSAGE).handler(this::sendMessage);
         HttpServerHelper.createAnHttpServer(vertx, router, config(), future);

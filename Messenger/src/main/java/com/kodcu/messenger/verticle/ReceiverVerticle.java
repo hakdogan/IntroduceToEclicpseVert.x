@@ -12,12 +12,8 @@ import static com.kodcu.util.Constants.*;
 @Slf4j
 public class ReceiverVerticle extends AbstractVerticle {
 
-    /**
-     *
-     * @throws Exception
-     */
     @Override
-    public void start() throws Exception {
+    public void start() {
         final EventBus eventBus = vertx.eventBus();
         eventBus.consumer(ADDRESS, receivedMessage -> {
             log.debug("Received message: {} ", receivedMessage.body());

@@ -1,6 +1,6 @@
 package com.kodcu.lds.verticle;
 
-import com.kodcu.entity.Data;
+import com.kodcu.entity.SimpleData;
 import com.kodcu.helper.HttpServerHelper;
 import com.kodcu.helper.RouterHelper;
 import io.vertx.core.AbstractVerticle;
@@ -23,10 +23,9 @@ public class SharingVerticle extends AbstractVerticle {
     /**
      *
      * @param future
-     * @throws Exception
      */
     @Override
-    public void start(Future<Void> future) throws Exception {
+    public void start(Future<Void> future) {
 
         final Router router = RouterHelper.createRouter(vertx, "Hello from shared data example!");
         router.post("/put*").handler(BodyHandler.create());
@@ -42,7 +41,7 @@ public class SharingVerticle extends AbstractVerticle {
     private void putData(RoutingContext routingContext){
         final SharedData sd = vertx.sharedData();
         final LocalMap<String, String> sharedData = sd.getLocalMap(DEFAULT_LOCAL_MAP_NAME);
-        final Data data = Json.decodeValue(routingContext.getBodyAsString(), Data.class);
+        final SimpleData data = Json.decodeValue(routingContext.getBodyAsString(), SimpleData.class);
 
         sharedData.put(data.getKey(), data.getValue());
         routingContext.response()

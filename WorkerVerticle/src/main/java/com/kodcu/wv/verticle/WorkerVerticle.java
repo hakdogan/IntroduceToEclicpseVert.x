@@ -4,7 +4,6 @@ import com.kodcu.helper.HttpServerHelper;
 import com.kodcu.helper.RouterHelper;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
-import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +24,7 @@ public class WorkerVerticle extends AbstractVerticle {
      * @param future
      */
     @Override
-    public void start(Future<Void> future)  {
+    public void start(Future<Void> future) {
         final Router router = RouterHelper.createRouter(vertx,"Hello from Worker Verticle example!");
         router.post("/get/:" + PATH_PARAM_TO_SAVE_WORD).handler(this::saveWord);
         HttpServerHelper.createAnHttpServer(vertx, router, config(), future);

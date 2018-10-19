@@ -18,6 +18,11 @@
             <version>${vertx.version}</version>
         </dependency>
         <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web-templ-freemarker</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
             <groupId>kodcu</groupId>
             <artifactId>util</artifactId>
             <version>1.0-SNAPSHOT</version>

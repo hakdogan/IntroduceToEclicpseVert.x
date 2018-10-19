@@ -20,7 +20,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vertx.version>3.5.3</vertx.version>
+        <vertx.version>3.5.4</vertx.version>
         <lombok.version>1.16.20</lombok.version>
         <junit.version>4.12</junit.version>
     </properties>
@@ -33,7 +33,10 @@
         <module>Util</module>
         <module>WorkerVerticle</module>
         <module>Helper</module>
+        <module>Entity</module>
         <module>LocalDataSharing</module>
+        <module>SharedDataProvider</module>
+        <module>SharedDataReader</module>
     </modules>
 
     <dependencies>

@@ -1,6 +1,6 @@
 package com.kodcu;
 
-import com.kodcu.entity.Data;
+import com.kodcu.entity.SimpleData;
 import com.kodcu.lds.verticle.LocalDataSharingAndReaderLauncher;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
@@ -25,7 +25,7 @@ import static com.kodcu.util.Constants.DEFAULT_HTTP_PORT;
 public class SharingAndReadingTest {
 
     private Vertx vertx;
-    private Data data = new Data("key1", "value1");
+    private SimpleData data = new SimpleData("key1", "value1");
 
     /**
      *
