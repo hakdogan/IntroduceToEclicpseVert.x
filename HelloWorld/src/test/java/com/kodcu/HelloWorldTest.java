@@ -1,7 +1,10 @@
 package com.kodcu;
 
+import com.kodcu.helper.RandomPortHelper;
 import com.kodcu.hw.verticle.HelloWorldVerticle;
+import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
+import io.vertx.core.json.JsonObject;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
 import io.vertx.ext.unit.junit.VertxUnitRunner;
@@ -9,6 +12,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import java.io.IOException;
 import static com.kodcu.util.Constants.*;
 
 /**
@@ -20,15 +24,18 @@ import static com.kodcu.util.Constants.*;
 public class HelloWorldTest {
 
     private Vertx vertx;
+    private int port;
 
     /**
      *
      * @param testContext
      */
     @Before
-    public void setup(TestContext testContext) {
+    public void setup(TestContext testContext) throws IOException {
         vertx = Vertx.vertx();
-        vertx.deployVerticle(HelloWorldVerticle.class.getName(), testContext.asyncAssertSuccess());
+        port = RandomPortHelper.getRandomLocalPort();
+        DeploymentOptions options = new DeploymentOptions().setConfig(new JsonObject().put("http.port", port));
+        vertx.deployVerticle(HelloWorldVerticle.class.getName(), options, testContext.asyncAssertSuccess());
     }
 
     /**
@@ -47,7 +54,7 @@ public class HelloWorldTest {
     @Test
     public void welcomePageTest(TestContext testContext) {
         final Async async = testContext.async();
-        vertx.createHttpClient().getNow(DEFAULT_HTTP_PORT, DEFAULT_HOSTNAME, "/",
+        vertx.createHttpClient().getNow(port, DEFAULT_HOSTNAME, "/",
                 response -> {
                     response.handler(responseBody -> {
                         testContext.assertTrue(responseBody.toString().contains("Hello from Vert.x application"));

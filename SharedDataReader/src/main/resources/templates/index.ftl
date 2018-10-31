@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Line Chart</title>
+    <title>Asynchronous Shared Data example</title>
     <style>
         canvas{
             -moz-user-select: none;

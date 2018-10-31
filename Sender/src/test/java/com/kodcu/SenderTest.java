@@ -54,7 +54,7 @@ public class SenderTest {
         final WebClient client = WebClient.create(vertx);
         final String pathParam = "hello";
 
-        client.post(DEFAULT_HTTP_PORT, DEFAULT_HOSTNAME, "/sendForAll//" + pathParam)
+        client.post(DEFAULT_HTTP_PORT, DEFAULT_HOSTNAME, "/sendForAll/" + pathParam)
                 .sendJsonObject(null, req -> {
                     if (req.succeeded()) {
                         testContext.assertTrue(req.result().bodyAsString().contains(pathParam));

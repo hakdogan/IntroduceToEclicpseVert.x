@@ -38,3 +38,6 @@ sh run.sh
 ```
 
 ![](images/reader.png)
+
+## Relevant article is
+[How to Share Data Between Threads in Vert.x](https://medium.com/@hakdogan/how-to-share-data-between-threads-in-vert-x-afdf26dcc684)

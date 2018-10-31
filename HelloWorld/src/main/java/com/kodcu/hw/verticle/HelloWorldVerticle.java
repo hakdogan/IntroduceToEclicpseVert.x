@@ -16,7 +16,7 @@ public class HelloWorldVerticle extends AbstractVerticle {
     @Override
     public void start(Future<Void> future) {
         vertx.createHttpServer().requestHandler(request -> request.response()
-                .end("Hello from Vert.x application")).listen(8080, result -> {
+                .end("Hello from Vert.x application")).listen(config().getInteger("http.port", 8080), result -> {
                     if (result.succeeded()) {
                         future.complete();
                     } else {
@@ -24,4 +24,6 @@ public class HelloWorldVerticle extends AbstractVerticle {
                     }
                 });
     }
+
+
 }
