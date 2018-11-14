@@ -86,11 +86,11 @@
 
         var ctx = document.getElementById("canvas").getContext("2d");
         var myLineChart = new Chart(ctx, config);
-
+        var url = "http://" + location.host + "/refresh";
         setInterval(function() {
             $.ajax({
                 type:"get",
-                url: "http://localhost:8080/refresh",
+                url: url,
                 success: function(result){
                     if(null != result){
                         if(myLineChart.data.labels.length > 9) {

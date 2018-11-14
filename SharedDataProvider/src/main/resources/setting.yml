@@ -1,0 +1,3 @@
+jar:
+  name: SharedDataProvider/target/asyncPutVerticle.jar
+  arguments: -cluster

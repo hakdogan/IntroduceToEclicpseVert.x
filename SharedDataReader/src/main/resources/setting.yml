@@ -1,0 +1,3 @@
+jar:
+  name: SharedDataReader/target/asyncReaderVerticle.jar
+  arguments: -cluster
