@@ -1,6 +1,6 @@
 # Local Data Sharing
 
-This example shows the use of `Shared Data` via `Local Shared Maps` in Vert.x. An object(`com.kodcu.entity.SimpleData`) you send with the `HTTP Post` request over the `http://localhost:8080/put` is saved and you can access that object with `HTTP Get` request over the `http://localhost:8080/read` URL.
+This example shows the use of `Shared Data` via `Local Shared Maps` in Vert.x. An object(`com.kodcu.entity.SimpleData`) you send with the `HTTP Post` request over the `http://localhost:8080/put` is saved and you can access that object with `HTTP Get` request over the `http://localhost:8081/read` URL.
                                                  
 ```java
    /**

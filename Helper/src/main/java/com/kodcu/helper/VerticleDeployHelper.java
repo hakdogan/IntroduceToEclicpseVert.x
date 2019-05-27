@@ -10,8 +10,8 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class VerticleDeployHelper {
-
+public class VerticleDeployHelper
+{
     private VerticleDeployHelper() {}
 
     /**
@@ -20,14 +20,14 @@ public class VerticleDeployHelper {
      * @param name
      * @return
      */
-    public static Future<Void> deployHelper(Vertx vertx, String name){
+    public static Future<Void> deployHelper(final Vertx vertx, final String name){
         final Future<Void> future = Future.future();
         vertx.deployVerticle(name, res -> {
             if(res.failed()){
-                log.error("Failed to deploy verticle " + name);
+                log.error("Failed to deploy verticle!", name);
                 future.fail(res.cause());
             } else {
-                log.info("Deployed verticle " + name);
+                log.info("{} verticle deployed!", name);
                 future.complete();
             }
         });
@@ -41,7 +41,7 @@ public class VerticleDeployHelper {
      * @param className
      * @return
      */
-    public static Future<Void> deployHelper(ClusterManager manager, String className){
+    public static Future<Void> deployHelper(final ClusterManager manager, final String className){
 
         final Future<Void> future = Future.future();
         final ClusterManager mgr = manager;
@@ -52,18 +52,18 @@ public class VerticleDeployHelper {
                 try {
                     cluster.result().deployVerticle((Verticle) Class.forName(className).newInstance(), res -> {
                         if(res.succeeded()){
-                            log.info("Deployment id is: " + res.result());
+                            log.info("Deployment id is {}", res.result());
                             future.complete();
                         } else {
-                            log.error("Deployment failed!");
+                            log.error("Deployment failed!", res.cause());
                             future.fail(res.cause());
                         }
                     });
                 } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-                    log.error("Verticle deploy failed {} ", e);
+                    log.error("Verticle deploy failed!", e);
                 }
             } else {
-                log.error("Cluster up failed: " + cluster.cause());
+                log.error("Cluster up failed!", cluster.cause());
                 future.fail(cluster.cause());
             }
         });

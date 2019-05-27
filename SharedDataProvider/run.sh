@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 mvn clean install
-java -jar target/asyncPutVerticle.jar -cluster
+java -jar target/asyncPutVerticle.jar

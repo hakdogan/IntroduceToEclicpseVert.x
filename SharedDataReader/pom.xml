@@ -13,15 +13,11 @@
 
     <properties>
         <main.verticle>com.kodcu.sdr.verticle.ReaderVerticle</main.verticle>
+        <main.class>com.kodcu.main.Starter</main.class>
         <jar.name>asyncReaderVerticle</jar.name>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-hazelcast</artifactId>
-            <version>${vertx.version}</version>
-        </dependency>
         <dependency>
             <groupId>kodcu</groupId>
             <artifactId>entity</artifactId>

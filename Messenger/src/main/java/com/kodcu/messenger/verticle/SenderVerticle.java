@@ -15,7 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import static com.kodcu.util.Constants.*;
 
 @Slf4j
-public class SenderVerticle extends AbstractVerticle {
+public class SenderVerticle extends AbstractVerticle
+{
 
     /**
      *

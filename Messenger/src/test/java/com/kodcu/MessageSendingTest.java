@@ -18,7 +18,8 @@ import static com.kodcu.util.Constants.*;
  */
 
 @RunWith(VertxUnitRunner.class)
-public class MessageSendingTest {
+public class MessageSendingTest
+{
 
     private Vertx vertx;
 

@@ -29,8 +29,8 @@ mvn celan install
 
 ## To run
 ```bash
-java -jar target/clusteredSenderLauncher.jar -cluster
-#For multiple instances java -jar target/clusteredSenderLauncher.jar -cluster -instances 2
+java -jar target/clusteredSenderLauncher.jar
+#For multiple instances java -jar target/clusteredSenderLauncher.jar -instances 2
 
 ```
 Or

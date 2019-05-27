@@ -11,15 +11,16 @@ import io.vertx.core.shareddata.SharedData;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
-import static com.kodcu.util.Constants.DEFAULT_LOCAL_MAP_NAME;
+
+import static com.kodcu.util.Constants.*;
 
 /**
  * @author hakdogan (hakdogan@kodcu.com)
  * Created on 11.10.2018
  */
 
-public class SharingVerticle extends AbstractVerticle {
-
+public class SharingVerticle extends AbstractVerticle
+{
     /**
      *
      * @param future
@@ -46,7 +47,7 @@ public class SharingVerticle extends AbstractVerticle {
         sharedData.put(data.getKey(), data.getValue());
         routingContext.response()
                 .setStatusCode(201)
-                .putHeader("content-type", "application/json; charset=utf-8")
+                .putHeader(CONTENT_TYPE, JSON_PRODUCE)
                 .end(Json.encodePrettily(data));
 
 

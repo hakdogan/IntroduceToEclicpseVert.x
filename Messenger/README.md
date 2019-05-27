@@ -13,7 +13,7 @@ This example shows the use of 2 verticles communicating with each other. The mes
 
         eventBus.send(ADDRESS, message, reply -> {
             if (reply.succeeded()) {
-                log.info("Received reply: " + reply.result().body());
+                log.info("Received reply: {} ", reply.result().body());
             } else {
                 log.info("No reply");
             }
@@ -28,7 +28,7 @@ This example shows the use of 2 verticles communicating with each other. The mes
     public void start() throws Exception {
         final EventBus eventBus = vertx.eventBus();
         eventBus.consumer(ADDRESS, receivedMessage -> {
-            log.debug("Received message: " + receivedMessage.body());
+            log.debug("Received message: {} ", receivedMessage.body());
             receivedMessage.reply(DEFAULT_REPLY_MESSAGE);
         });
 

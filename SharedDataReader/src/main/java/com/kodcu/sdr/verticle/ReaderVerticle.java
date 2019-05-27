@@ -6,12 +6,12 @@ import com.kodcu.helper.PageRenderHelper;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.json.Json;
+import io.vertx.core.json.JsonObject;
 import io.vertx.core.shareddata.AsyncMap;
 import io.vertx.core.shareddata.SharedData;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import lombok.extern.slf4j.Slf4j;
-
 
 import static com.kodcu.util.Constants.*;
 
@@ -21,8 +21,9 @@ import static com.kodcu.util.Constants.*;
  */
 
 @Slf4j
-public class ReaderVerticle extends AbstractVerticle {
-
+public class ReaderVerticle extends AbstractVerticle
+{
+    private static final String TEMPLATE_FILE_NAME = "/index.ftl";
     private StockExchange stockExchange;
 
     /**
@@ -41,9 +42,15 @@ public class ReaderVerticle extends AbstractVerticle {
      *
      * @param routingContext
      */
-    private void welcomePage(RoutingContext routingContext){
+    private void welcomePage(final RoutingContext routingContext){
         saveExchangeData();
-        PageRenderHelper.pageRender(routingContext, "/index.ftl", HTML_PRODUCE, HTTP_STATUS_CODE_OK);
+        JsonObject contextObject = new JsonObject()
+                .put("title", "Asynchronous Shared Data example")
+                .put("headText", "Hello from Asynchronous Shared Data example!")
+                .put("information", "This chart shows the rate values of some imaginary stocks at a specific time. " +
+                "The values are generated randomly by the SharedMapsProvider verticle every three seconds and the SharedDataReader verticle read " +
+                "these data every second");
+        PageRenderHelper.pageRender(contextObject, routingContext, TEMPLATE_FILE_NAME, HTML_PRODUCE, HTTP_STATUS_CODE_OK);
     }
 
     /**

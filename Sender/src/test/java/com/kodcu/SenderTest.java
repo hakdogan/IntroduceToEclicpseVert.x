@@ -20,8 +20,8 @@ import static com.kodcu.util.Constants.DEFAULT_HTTP_PORT;
  */
 
 @RunWith(VertxUnitRunner.class)
-public class SenderTest {
-
+public class SenderTest
+{
     private Vertx vertx;
 
     /**

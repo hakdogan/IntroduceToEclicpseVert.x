@@ -19,7 +19,8 @@ import static com.kodcu.util.Constants.*;
  * Created on 19.10.2018
  */
 @RunWith(VertxUnitRunner.class)
-public class ReadDataTest {
+public class ReadDataTest
+{
 
     private Vertx vertx;
 

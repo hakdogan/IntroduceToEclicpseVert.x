@@ -22,7 +22,8 @@ import static com.kodcu.util.Constants.DEFAULT_HTTP_PORT;
  */
 
 @RunWith(VertxUnitRunner.class)
-public class SharingAndReadingTest {
+public class SharingAndReadingTest
+{
 
     private Vertx vertx;
     private SimpleData data = new SimpleData("key1", "value1");
@@ -60,6 +61,8 @@ public class SharingAndReadingTest {
                         testContext.assertTrue(req.result().bodyAsString().contains(data.getKey()));
                         readTest(testContext);
                         async.complete();
+                    } else {
+                        testContext.fail(req.cause());
                     }
                 });
     }
@@ -69,11 +72,16 @@ public class SharingAndReadingTest {
      * @param testContext
      */
     private void readTest(TestContext testContext){
-        vertx.createHttpClient().getNow(8081, DEFAULT_HOSTNAME, "/read",
-                response -> {
-                    response.handler(responseBody -> {
-                        testContext.assertTrue(responseBody.toString().contains(data.getValue()));
-                    });
+        final Async async = testContext.async();
+        final WebClient client = WebClient.create(vertx);
+        client.get(8081, DEFAULT_HOSTNAME, "/read")
+                .send(req -> {
+                    if(req.succeeded()){
+                        testContext.assertTrue(req.result().bodyAsString().contains(data.getValue()));
+                        async.complete();
+                    } else {
+                        testContext.fail(req.cause());
+                    }
                 });
     }
 

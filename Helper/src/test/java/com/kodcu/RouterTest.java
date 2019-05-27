@@ -15,7 +15,7 @@ public class RouterTest {
 
     @Test
     public void getRouter(){
-        Router router = RouterHelper.createRouter(Vertx.vertx(), "Hello");
+        final Router router = RouterHelper.createRouter(Vertx.vertx(), "Hello");
         assertFalse(router.getRoutes().isEmpty());
     }
 }

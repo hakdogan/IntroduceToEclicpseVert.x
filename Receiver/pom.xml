@@ -12,6 +12,7 @@
     <artifactId>receiver</artifactId>
 
     <properties>
+        <main.class>com.kodcu.main.Starter</main.class>
         <main.verticle>com.kodcu.clustered.receiver.verticle.ClusteredReceiver</main.verticle>
         <jar.name>clusteredReceiverLauncher</jar.name>
     </properties>
@@ -37,7 +38,6 @@
             <groupId>kodcu</groupId>
             <artifactId>helper</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

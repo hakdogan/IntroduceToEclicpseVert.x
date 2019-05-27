@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 mvn clean install
-java -jar target/asyncReaderVerticle.jar -cluster
+java -jar target/asyncReaderVerticle.jar

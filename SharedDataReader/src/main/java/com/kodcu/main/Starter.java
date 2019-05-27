@@ -1,5 +1,6 @@
 package com.kodcu.main;
 
+import com.kodcu.helper.ClusterConfiguratorHelper;
 import com.kodcu.sdr.verticle.ReaderVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
@@ -20,19 +21,19 @@ public class Starter {
      * @param args
      */
     public static void main(String[] args){
-        final ClusterManager mgr = new HazelcastClusterManager();
+        final ClusterManager mgr = new HazelcastClusterManager(ClusterConfiguratorHelper.getHazelcastConfiguration());
         final VertxOptions options = new VertxOptions().setClusterManager(mgr);
         Vertx.clusteredVertx(options, cluster -> {
             if (cluster.succeeded()) {
                 cluster.result().deployVerticle(new ReaderVerticle(), res -> {
                     if(res.succeeded()){
-                        log.info("Deployment id is: " + res.result());
+                        log.info("Deployment id is {} ", res.result());
                     } else {
-                        log.error("Deployment failed!");
+                        log.error("Deployment failed!", res.cause());
                     }
                 });
             } else {
-                log.error("Cluster up failed: " + cluster.cause());
+                log.error("Cluster up failed!", cluster.cause());
             }
         });
     }

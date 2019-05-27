@@ -12,8 +12,8 @@ import static com.kodcu.util.Constants.DEFAULT_WORKER_POOL_SIZE;
  */
 
 @Slf4j
-public class Starter {
-
+public class Starter
+{
     /**
      *
      * @param args
@@ -24,7 +24,7 @@ public class Starter {
                 .setWorkerPoolSize(DEFAULT_WORKER_POOL_SIZE);
         vertx.deployVerticle(new WorkerVerticle(), options, res -> {
             if (res.succeeded()) {
-                log.info("Deployment id is: " + res.result());
+                log.info("Deployment id is: {} ", res.result());
             } else {
                 log.info("Deployment failed!");
             }

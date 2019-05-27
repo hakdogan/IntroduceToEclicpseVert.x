@@ -17,7 +17,8 @@ import static com.kodcu.util.Constants.*;
  */
 
 @Slf4j
-public class WorkerVerticle extends AbstractVerticle {
+public class WorkerVerticle extends AbstractVerticle
+{
 
     /**
      *

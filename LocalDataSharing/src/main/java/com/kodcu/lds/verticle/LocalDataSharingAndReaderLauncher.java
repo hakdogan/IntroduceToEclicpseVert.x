@@ -10,7 +10,8 @@ import io.vertx.core.Future;
  * Created on 11.10.2018
  */
 
-public class LocalDataSharingAndReaderLauncher extends AbstractVerticle {
+public class LocalDataSharingAndReaderLauncher extends AbstractVerticle
+{
 
     /**
      *

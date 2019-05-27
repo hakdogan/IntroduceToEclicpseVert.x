@@ -14,15 +14,17 @@
         <developer>
             <name>Huseyin Akdogan</name>
             <email>hakdogan@kodcu.com</email>
-            <organization>Istanbul JUG</organization>
+            <url>https://github.com/hakdogan</url>
+            <organization>JUG Istanbul</organization>
         </developer>
     </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vertx.version>3.5.4</vertx.version>
+        <vertx.version>3.7.1</vertx.version>
         <lombok.version>1.16.20</lombok.version>
         <junit.version>4.12</junit.version>
+        <soapui.version>5.5.0</soapui.version>
     </properties>
 
     <modules>
@@ -37,6 +39,7 @@
         <module>LocalDataSharing</module>
         <module>SharedDataProvider</module>
         <module>SharedDataReader</module>
+        <module>routing</module>
     </modules>
 
     <dependencies>
@@ -73,7 +76,25 @@
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.smartbear.soapui</groupId>
+            <artifactId>soapui-maven-plugin</artifactId>
+            <version>${soapui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.smartbear.soapui</groupId>
+            <artifactId>soapui</artifactId>
+            <version>${soapui.version}</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>smartbear</id>
+            <name>smartbear repository</name>
+            <url>http://smartbearsoftware.com/repository/maven2</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
@@ -100,7 +121,7 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
-                                        <Main-Class>io.vertx.core.Launcher</Main-Class>
+                                        <Main-Class>${main.class}</Main-Class> <!--io.vertx.core.Launcher-->
                                         <Main-Verticle>${main.verticle}</Main-Verticle>
                                     </manifestEntries>
                                 </transformer>

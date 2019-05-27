@@ -22,7 +22,8 @@ import static com.kodcu.util.Constants.DEFAULT_ASYNC_MAP_NAME;
  */
 
 @RunWith(VertxUnitRunner.class)
-public class SharedDataTest {
+public class SharedDataTest
+{
 
     private Vertx vertx;
     private StockExchange stockExchange;

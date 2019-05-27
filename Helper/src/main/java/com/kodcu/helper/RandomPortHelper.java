@@ -1,6 +1,8 @@
 package com.kodcu.helper;
 
 import lombok.extern.slf4j.Slf4j;
+
+import javax.net.ssl.SSLServerSocketFactory;
 import java.net.ServerSocket;
 
 /**
@@ -9,19 +11,16 @@ import java.net.ServerSocket;
  */
 
 @Slf4j
-public class RandomPortHelper {
-
+public class RandomPortHelper
+{
     private RandomPortHelper() {}
 
     public static int getRandomLocalPort(){
-
-        try (ServerSocket socket = new ServerSocket(0); ){
-            int portNumber = socket.getLocalPort();
-            return portNumber;
+        try (ServerSocket socket = SSLServerSocketFactory.getDefault().createServerSocket(0); ){
+            return socket.getLocalPort();
         } catch (Exception ex) {
-            log.error("Exception was thrown in getRandomLocalPort method. {} ", ex);
+            log.error("An exception was thrown in getRandomLocalPort method!", ex);
         }
-
         return 0;
     }
 }

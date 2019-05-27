@@ -16,7 +16,8 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StockExchangeData implements Serializable {
+public class StockExchangeData implements Serializable
+{
     private String name;
     private int rate;
 }

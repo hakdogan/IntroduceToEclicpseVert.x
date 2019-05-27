@@ -14,7 +14,8 @@ import static com.kodcu.util.Constants.*;
  */
 
 @Slf4j
-public class HttpServerHelper {
+public class HttpServerHelper
+{
 
     private HttpServerHelper() {}
 
@@ -25,8 +26,8 @@ public class HttpServerHelper {
      * @param config
      * @param future
      */
-    public static void createAnHttpServer(Vertx vertx, Router router, JsonObject config, Future<Void> future){
-        createAnHttpServer(vertx, router, config, DEFAULT_HTTP_PORT, future);
+    public static void createAnHttpServer(final Vertx vertx, final Router router, final JsonObject config, final Future<Void> future){
+        createAnHttpServer(vertx, router, config, config.getInteger("http.port", DEFAULT_HTTP_PORT), future);
     }
 
     /**
@@ -37,9 +38,10 @@ public class HttpServerHelper {
      * @param port
      * @param future
      */
-    public static void createAnHttpServer(Vertx vertx, Router router, JsonObject config, int port, Future<Void> future){
-        vertx.createHttpServer().requestHandler(router::accept)
-                .listen(config.getInteger("http.server.port", port), result -> {
+    public static void createAnHttpServer(final Vertx vertx, final Router router, final JsonObject config,
+                                          final int port, final Future<Void> future){
+        vertx.createHttpServer().requestHandler(router)
+                .listen(config.getInteger("http.port", port), result -> {
                     if (result.succeeded()) {
                         log.info("HTTP server running on port {} ", port);
                         future.complete();
@@ -48,8 +50,5 @@ public class HttpServerHelper {
                         future.fail(result.cause());
                     }
                 });
-
     }
-
-
 }

@@ -9,14 +9,16 @@ import io.vertx.core.shareddata.LocalMap;
 import io.vertx.core.shareddata.SharedData;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
-import static com.kodcu.util.Constants.DEFAULT_LOCAL_MAP_NAME;
+
+import static com.kodcu.util.Constants.*;
+
 /**
  * @author hakdogan (hakdogan@kodcu.com)
  * Created on 11.10.2018
  */
 
-public class ReaderVerticle extends AbstractVerticle {
-
+public class ReaderVerticle extends AbstractVerticle
+{
     /**
      *
      * @param future
@@ -38,8 +40,8 @@ public class ReaderVerticle extends AbstractVerticle {
         final LocalMap<String, String> sharedData = sd.getLocalMap(DEFAULT_LOCAL_MAP_NAME);
 
         routingContext.response()
-                .setStatusCode(200)
-                .putHeader("content-type", "application/json; charset=utf-8")
+                .setStatusCode(HTTP_STATUS_CODE_OK)
+                .putHeader(CONTENT_TYPE, JSON_PRODUCE)
                 .end(Json.encodePrettily(sharedData));
 
     }

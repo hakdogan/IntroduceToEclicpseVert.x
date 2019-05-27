@@ -11,7 +11,8 @@ import io.vertx.core.Future;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class MessengerLauncher extends AbstractVerticle {
+public class MessengerLauncher extends AbstractVerticle
+{
 
     /**
      *

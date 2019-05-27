@@ -14,7 +14,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SimpleData {
+public class SimpleData
+{
     private String key;
     private String value;
 }

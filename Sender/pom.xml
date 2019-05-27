@@ -12,6 +12,7 @@
     <artifactId>sender</artifactId>
 
     <properties>
+        <main.class>com.kodcu.main.Starter</main.class>
         <main.verticle>com.kodcu.clustered.sender.verticle.ClusteredSender</main.verticle>
         <jar.name>clusteredSenderLauncher</jar.name>
     </properties>

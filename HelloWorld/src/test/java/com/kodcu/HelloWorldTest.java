@@ -8,6 +8,7 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
 import io.vertx.ext.unit.junit.VertxUnitRunner;
+import io.vertx.ext.web.client.WebClient;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +22,8 @@ import static com.kodcu.util.Constants.*;
  */
 
 @RunWith(VertxUnitRunner.class)
-public class HelloWorldTest {
+public class HelloWorldTest
+{
 
     private Vertx vertx;
     private int port;
@@ -54,12 +56,15 @@ public class HelloWorldTest {
     @Test
     public void welcomePageTest(TestContext testContext) {
         final Async async = testContext.async();
-        vertx.createHttpClient().getNow(port, DEFAULT_HOSTNAME, "/",
-                response -> {
-                    response.handler(responseBody -> {
-                        testContext.assertTrue(responseBody.toString().contains("Hello from Vert.x application"));
+        final WebClient client = WebClient.create(vertx);
+        client.get(port, DEFAULT_HOSTNAME, "/")
+                .send(req -> {
+                    if(req.succeeded()){
+                        testContext.assertTrue(req.result().bodyAsString().contains("Hello from Vert.x application"));
                         async.complete();
-                    });
+                    } else {
+                        testContext.fail(req.cause());
+                    }
                 });
     }
 }

@@ -8,7 +8,8 @@ import io.vertx.core.Vertx;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Starter {
+public class Starter
+{
 
     /**
      *
@@ -18,7 +19,7 @@ public class Starter {
         final Vertx vertx = Vertx.vertx();
         vertx.deployVerticle(new MessengerLauncher(), res -> {
             if(res.succeeded()){
-                log.info("Deployment id is: " + res.result());
+                log.info("Deployment id is: {} ", res.result());
             } else {
                 log.error("Deployment failed!");
             }

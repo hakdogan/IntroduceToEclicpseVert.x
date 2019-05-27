@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Asynchronous Shared Data example</title>
+    <title>${title}</title>
     <style>
         canvas{
             -moz-user-select: none;
@@ -12,14 +12,13 @@
 </head>
 
 <body style="padding: 5px;">
-<h1>Hello from Asynchronous Shared Data example!</h1>
+<h1>${headText}</h1>
 <div style="width: 100%; display: table;">
     <div style="display: table-row">
         <div style="display: table-cell; vertical-align: top; width: 300px;">
             <br/><br/><br/>
-            This chart shows the rate values of some imaginary stocks at a specific time.
-            The values are generated randomly by the SharedMapsProvider verticle every three seconds
-            and the SharedDataReader verticle read these data every second.</div>
+            ${information}
+            </div>
         <div style="width: 650px;">
             <canvas id="canvas"></canvas>
         </div>
@@ -98,7 +97,6 @@
                             myLineChart.data.datasets[1].data.shift();
                             myLineChart.data.labels.shift();
                         }
-
                         var data1 = result.dataList[0];
                         var data2 = result.dataList[1];
 

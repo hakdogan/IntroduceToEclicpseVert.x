@@ -10,8 +10,8 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class Starter {
-
+public class Starter
+{
     /**
      *
      * @param args
@@ -20,7 +20,7 @@ public class Starter {
         final Vertx vertx = Vertx.vertx();
         vertx.deployVerticle(new LocalDataSharingAndReaderLauncher(), res -> {
             if(res.succeeded()){
-                log.info("Deployment id is: " + res.result());
+                log.info("Deployment id is: {} ", res.result());
             } else {
                 log.error("Deployment failed!");
             }

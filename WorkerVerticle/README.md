@@ -8,7 +8,7 @@ This example shows the use of `worker verticle`. A word you send with the `HTTP 
                 .setWorkerPoolSize(DEFAULT_WORKER_POOL_SIZE);
         vertx.deployVerticle(new WorkerVerticle(), options, res -> {
             if (res.succeeded()) {
-                log.info("Deployment id is: " + res.result());
+                log.info("Deployment id is: {} ", res.result());
             } else {
                 log.info("Deployment failed!");
             }

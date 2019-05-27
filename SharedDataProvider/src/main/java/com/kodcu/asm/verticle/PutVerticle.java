@@ -22,7 +22,8 @@ import static com.kodcu.util.Constants.*;
  */
 
 @Slf4j
-public class PutVerticle extends AbstractVerticle {
+public class PutVerticle extends AbstractVerticle
+{
 
     @Override
     public void start() throws NoSuchAlgorithmException {

@@ -13,15 +13,11 @@
 
     <properties>
         <main.verticle>com.kodcu.asm.verticle.PutVerticle</main.verticle>
+        <main.class>com.kodcu.main.Starter</main.class>
         <jar.name>asyncPutVerticle</jar.name>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-hazelcast</artifactId>
-            <version>${vertx.version}</version>
-        </dependency>
         <dependency>
             <groupId>kodcu</groupId>
             <artifactId>entity</artifactId>

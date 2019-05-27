@@ -26,7 +26,7 @@ mvn celan install
 
 ## To run
 ```bash
-java -jar target/clusteredReceiverLauncher.jar -cluster
+java -jar target/clusteredReceiverLauncher.jar
 
 ```
 Or

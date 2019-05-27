@@ -17,7 +17,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StockExchange implements Serializable {
+public class StockExchange implements Serializable
+{
     private String time;
     private List<StockExchangeData> dataList;
 }

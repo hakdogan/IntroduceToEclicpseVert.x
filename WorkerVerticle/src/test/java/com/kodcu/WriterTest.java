@@ -19,8 +19,8 @@ import static com.kodcu.util.Constants.*;
  */
 
 @RunWith(VertxUnitRunner.class)
-public class WriterTest {
-
+public class WriterTest
+{
     private Vertx vertx;
 
     /**
