@@ -39,7 +39,7 @@
         <module>LocalDataSharing</module>
         <module>SharedDataProvider</module>
         <module>SharedDataReader</module>
-        <module>routing</module>
+        <module>Routing</module>
     </modules>
 
     <dependencies>

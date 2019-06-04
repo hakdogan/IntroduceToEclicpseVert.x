@@ -27,3 +27,7 @@ Or
 ```bash
 sh run.sh
 ```
+
+## Relevant article is
+
+[How to Call the Next Handler in Vert.x?](https://medium.com/@hakdogan/how-to-call-the-next-handler-in-vert-x-c498506c427c)

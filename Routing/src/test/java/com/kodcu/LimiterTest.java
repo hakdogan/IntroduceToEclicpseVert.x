@@ -60,7 +60,7 @@ public class LimiterTest
                 vertx = cluster.result();
                 vertx.deployVerticle(LimiterVerticle.class.getName(), options, res -> {
                     if(res.succeeded()){
-                        log.info("Deployment id is: {} ", res.result());
+                        log.info("********************** Deployment id is: {} ", res.result());
                         async.complete();
                     } else {
                         log.info("Deployment failed", res.cause());

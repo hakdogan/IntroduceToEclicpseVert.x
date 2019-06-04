@@ -31,8 +31,8 @@ public class LimiterVerticle extends AbstractVerticle
                 .setConfig(new JsonObject().put("path", System.getProperty("user.dir") + "/src/main/resources/config.json"));
 
         final ConfigRetrieverOptions options = new ConfigRetrieverOptions().addStore(rateOptions);
+        final Router router = RouterHelper.createRouter(vertx, "Hello from routing example!");
 
-        final Router router = RouterHelper.createRouter(vertx, "Hello from rate limiter example!");
         router.get("/limiting").handler(new CircuitBreakerHandler(options));
         router.get("/limiting").handler(new RateLimiterHandler(options));
         HttpServerHelper.createAnHttpServer(vertx, router, config(), future);

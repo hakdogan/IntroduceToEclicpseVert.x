@@ -15,3 +15,4 @@ These articles are:
 * [How to Run a Vert.x Cluster With Broadcasting Messaging](https://medium.com/@hakdogan/how-to-run-a-vert-x-cluster-with-broadcasting-messaging-fc79ff113c9c)
 * [How to Run Blocking Code in Vert.x](https://medium.com/@hakdogan/how-to-run-blocking-code-in-vert-x-174dad7e0f94)
 * [How to Share Data Between Threads in Vert.x](https://medium.com/@hakdogan/how-to-share-data-between-threads-in-vert-x-afdf26dcc684)
+* [How to Call the Next Handler in Vert.x?](https://medium.com/@hakdogan/how-to-call-the-next-handler-in-vert-x-c498506c427c)
