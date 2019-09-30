@@ -3,7 +3,7 @@ package com.kodcu.lds.verticle;
 import com.kodcu.helper.HttpServerHelper;
 import com.kodcu.helper.RouterHelper;
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Future;
+import io.vertx.core.Promise;
 import io.vertx.core.json.Json;
 import io.vertx.core.shareddata.LocalMap;
 import io.vertx.core.shareddata.SharedData;
@@ -21,14 +21,14 @@ public class ReaderVerticle extends AbstractVerticle
 {
     /**
      *
-     * @param future
+     * @param promise
      */
     @Override
-    public void start(Future<Void> future) {
+    public void start(Promise<Void> promise) {
         final Router router = RouterHelper.createRouter(vertx, "Hello from read data example!");
         router.get("/read").handler(this::readData);
 
-        HttpServerHelper.createAnHttpServer(vertx, router, config(), 8081, future);
+        HttpServerHelper.createAnHttpServer(vertx, router, config(), 8081, promise);
     }
 
     /**

@@ -4,7 +4,7 @@ import com.kodcu.entity.SimpleData;
 import com.kodcu.helper.HttpServerHelper;
 import com.kodcu.helper.RouterHelper;
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Future;
+import io.vertx.core.Promise;
 import io.vertx.core.json.Json;
 import io.vertx.core.shareddata.LocalMap;
 import io.vertx.core.shareddata.SharedData;
@@ -23,16 +23,16 @@ public class SharingVerticle extends AbstractVerticle
 {
     /**
      *
-     * @param future
+     * @param promise
      */
     @Override
-    public void start(Future<Void> future) {
+    public void start(Promise<Void> promise) {
 
         final Router router = RouterHelper.createRouter(vertx, "Hello from shared data example!");
         router.post("/put*").handler(BodyHandler.create());
         router.post("/put").handler(this::putData);
 
-        HttpServerHelper.createAnHttpServer(vertx, router, config(), future);
+        HttpServerHelper.createAnHttpServer(vertx, router, config(), promise);
     }
 
     /**

@@ -4,7 +4,7 @@ import com.kodcu.entity.StockExchange;
 import com.kodcu.helper.HttpServerHelper;
 import com.kodcu.helper.PageRenderHelper;
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Future;
+import io.vertx.core.Promise;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.shareddata.AsyncMap;
@@ -28,14 +28,14 @@ public class ReaderVerticle extends AbstractVerticle
 
     /**
      *
-     * @param future
+     * @param promise
      */
     @Override
-    public void start(Future<Void> future) {
+    public void start(Promise<Void> promise) {
         final Router router = Router.router(vertx);
         router.get("/").handler(this::welcomePage);
         router.get("/refresh").handler(this::refresh);
-        HttpServerHelper.createAnHttpServer(vertx, router, config(), future);
+        HttpServerHelper.createAnHttpServer(vertx, router, config(), promise);
     }
 
     /**

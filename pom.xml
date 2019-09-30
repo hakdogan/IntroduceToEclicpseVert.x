@@ -21,8 +21,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vertx.version>3.7.1</vertx.version>
-        <lombok.version>1.16.20</lombok.version>
+        <vertx.version>3.8.1</vertx.version>
+        <lombok.version>1.18.10</lombok.version>
         <junit.version>4.12</junit.version>
         <soapui.version>5.5.0</soapui.version>
     </properties>

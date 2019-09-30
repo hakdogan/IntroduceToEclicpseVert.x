@@ -7,7 +7,7 @@ package com.kodcu.messenger.verticle;
 import com.kodcu.helper.HttpServerHelper;
 import com.kodcu.helper.RouterHelper;
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Future;
+import io.vertx.core.Promise;
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
@@ -20,13 +20,13 @@ public class SenderVerticle extends AbstractVerticle
 
     /**
      *
-     * @param future
+     * @param promise
      */
     @Override
-    public void start(Future<Void> future) {
+    public void start(Promise<Void> promise) {
         final Router router = RouterHelper.createRouter(vertx, "Hello from non-clustered messenger example!");
         router.post("/send/:" + PATH_PARAM_TO_RECEIVE_MESSAGE).handler(this::sendMessage);
-        HttpServerHelper.createAnHttpServer(vertx, router, config(), future);
+        HttpServerHelper.createAnHttpServer(vertx, router, config(), promise);
     }
 
     /**
@@ -37,7 +37,7 @@ public class SenderVerticle extends AbstractVerticle
         final EventBus eventBus = vertx.eventBus();
         final String message = routingContext.request().getParam(PATH_PARAM_TO_RECEIVE_MESSAGE);
 
-        eventBus.send(ADDRESS, message, reply -> {
+        eventBus.request(ADDRESS, message, reply -> {
             if (reply.succeeded()) {
                 log.info("Received reply: {} ", reply.result().body());
             } else {

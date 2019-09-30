@@ -23,7 +23,7 @@ import static com.kodcu.util.Constants.*;
 public class RateLimiterHandler implements Handler<RoutingContext> {
 
     private final ConfigRetrieverOptions options;
-    private final String SHARED_MAP_NAME = "myLimiter";
+    private static final String SHAREDMAPNAME = "myLimiter";
 
     /**
      *
@@ -50,14 +50,14 @@ public class RateLimiterHandler implements Handler<RoutingContext> {
                     final JsonObject config = ar.result();
                     final Set<HazelcastInstance> instances = Hazelcast.getAllHazelcastInstances();
                     final HazelcastInstance hz = instances.stream().findFirst().get();
-                    final IMap<String, Bucket> rateLimiterIMap = hz.getMap(SHARED_MAP_NAME);
+                    final IMap<String, Bucket> rateLimiterIMap = hz.getMap(SHAREDMAPNAME);
 
                     if (rateLimiterIMap.isEmpty()) {
                         limiter = new Bucket();
                         limiter.setBucketKey(config.getString("bucketKey"));
                         limiter.setToken(config.getInteger("ratelimit"));
                     } else {
-                        limiter = rateLimiterIMap.get(SHARED_MAP_NAME);
+                        limiter = rateLimiterIMap.get(SHAREDMAPNAME);
                         limiter.setToken(limiter.getToken() - 1);
                         if (limiter.getToken() < 1) {
                             log.info("Request rejected...");
@@ -69,7 +69,7 @@ public class RateLimiterHandler implements Handler<RoutingContext> {
                         }
                     }
 
-                    rateLimiterIMap.put(SHARED_MAP_NAME, limiter, 60, TimeUnit.MINUTES);
+                    rateLimiterIMap.put(SHAREDMAPNAME, limiter, 60, TimeUnit.MINUTES);
                     log.info("Request allowed...");
                     context.response()
                             .putHeader(CONTENT_TYPE, HTML_PRODUCE)

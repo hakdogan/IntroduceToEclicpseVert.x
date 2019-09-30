@@ -7,7 +7,7 @@ package com.kodcu.messenger.verticle;
 import com.kodcu.helper.VerticleDeployHelper;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.CompositeFuture;
-import io.vertx.core.Future;
+import io.vertx.core.Promise;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -16,17 +16,17 @@ public class MessengerLauncher extends AbstractVerticle
 
     /**
      *
-     * @param future
+     * @param promise
      */
     @Override
-    public void start(Future<Void> future){
+    public void start(Promise<Void> promise){
         CompositeFuture.all(VerticleDeployHelper.deployHelper(vertx, ReceiverVerticle.class.getName()),
                 VerticleDeployHelper.deployHelper(vertx, SenderVerticle.class.getName()))
                 .setHandler(result -> {
                     if(result.succeeded()){
-                        future.complete();
+                        promise.complete();
                     } else {
-                        future.fail(result.cause());
+                        promise.fail(result.cause());
                     }
                 });
     }

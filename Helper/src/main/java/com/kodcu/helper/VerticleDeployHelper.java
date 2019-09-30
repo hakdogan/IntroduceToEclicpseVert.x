@@ -21,18 +21,18 @@ public class VerticleDeployHelper
      * @return
      */
     public static Future<Void> deployHelper(final Vertx vertx, final String name){
-        final Future<Void> future = Future.future();
+        final Promise<Void> promise = Promise.promise();
         vertx.deployVerticle(name, res -> {
             if(res.failed()){
                 log.error("Failed to deploy verticle!", name);
-                future.fail(res.cause());
+                promise.fail(res.cause());
             } else {
                 log.info("{} verticle deployed!", name);
-                future.complete();
+                promise.complete();
             }
         });
 
-        return future;
+        return promise.future();
     }
 
     /**
@@ -41,9 +41,9 @@ public class VerticleDeployHelper
      * @param className
      * @return
      */
-    public static Future<Void> deployHelper(final ClusterManager manager, final String className){
+    public static Promise<Void> deployHelper(final ClusterManager manager, final String className){
 
-        final Future<Void> future = Future.future();
+        final Promise<Void> promise = Promise.promise();
         final ClusterManager mgr = manager;
         final VertxOptions options = new VertxOptions().setClusterManager(mgr);
 
@@ -53,10 +53,10 @@ public class VerticleDeployHelper
                     cluster.result().deployVerticle((Verticle) Class.forName(className).newInstance(), res -> {
                         if(res.succeeded()){
                             log.info("Deployment id is {}", res.result());
-                            future.complete();
+                            promise.complete();
                         } else {
                             log.error("Deployment failed!", res.cause());
-                            future.fail(res.cause());
+                            promise.fail(res.cause());
                         }
                     });
                 } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
@@ -64,10 +64,10 @@ public class VerticleDeployHelper
                 }
             } else {
                 log.error("Cluster up failed!", cluster.cause());
-                future.fail(cluster.cause());
+                promise.fail(cluster.cause());
             }
         });
 
-        return future;
+        return promise;
     }
 }

@@ -7,7 +7,7 @@ import com.kodcu.routing.handler.RateLimiterHandler;
 import io.vertx.config.ConfigRetrieverOptions;
 import io.vertx.config.ConfigStoreOptions;
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Future;
+import io.vertx.core.Promise;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 
@@ -20,10 +20,10 @@ public class LimiterVerticle extends AbstractVerticle
 {
     /**
      *
-     * @param future
+     * @param promise
      */
     @Override
-    public void start(Future<Void> future) {
+    public void start(Promise<Void> promise) {
 
         final ConfigStoreOptions rateOptions = new ConfigStoreOptions()
                 .setType("file")
@@ -35,6 +35,6 @@ public class LimiterVerticle extends AbstractVerticle
 
         router.get("/limiting").handler(new CircuitBreakerHandler(options));
         router.get("/limiting").handler(new RateLimiterHandler(options));
-        HttpServerHelper.createAnHttpServer(vertx, router, config(), future);
+        HttpServerHelper.createAnHttpServer(vertx, router, config(), promise);
     }
 }

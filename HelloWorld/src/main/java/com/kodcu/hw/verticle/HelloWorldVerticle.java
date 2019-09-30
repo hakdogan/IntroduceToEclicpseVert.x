@@ -5,7 +5,7 @@ package com.kodcu.hw.verticle;
  */
 
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Future;
+import io.vertx.core.Promise;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -14,19 +14,19 @@ public class HelloWorldVerticle extends AbstractVerticle
 
     /**
      *
-     * @param future
+     * @param promise
      */
     @Override
-    public void start(final Future<Void> future) {
+    public void start(final Promise<Void> promise) {
         vertx.createHttpServer().requestHandler(request -> request.response()
                 .putHeader("content-type", "text/html; charset=utf-8")
                 .end("Hello from Vert.x application")).listen(config().getInteger("http.port", 8080), result -> {
                     if (result.succeeded()) {
                         log.info("HTTP server running on port {} ", 8080);
-                        future.complete();
+                        promise.complete();
                     } else {
                         log.error("Could not start a HTTP server", result.cause());
-                        future.fail(result.cause());
+                        promise.fail(result.cause());
                     }
                 });
     }
