@@ -4,7 +4,7 @@
 ![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hakdogan_IntroduceToEclicpseVert.x&metric=alert_status)
 ![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=hakdogan_IntroduceToEclicpseVert.x&metric=sqale_rating)
 ![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=hakdogan_IntroduceToEclicpseVert.x&metric=reliability_rating)
-![Code Coverage](https://sonarcloud.io/api/project_badges/measure?project=hakdogan_IntroduceToEclicpseVert.x&metric=coverage)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kodcu%3Avertx&metric=coverage)](https://sonarcloud.io/dashboard?id=kodcu%3Avertx)
 
 This repository contains the code of Vert.x examples contained in my articles published on platforms such as [kodcu.com](https://kodcu.com/author/hakdogan/), [medium](https://medium.com/@hakdogan), [dzone](https://dzone.com/users/1161493/hakdogan.html). How to run each example is described in its readme file.
 
