@@ -19,7 +19,7 @@ public class ClusterConfiguratorHelper
     public static Config getHazelcastConfiguration(){
         final Config config = new Config();
         final GroupConfig groupConfig = config.getGroupConfig();
-        groupConfig.setName("dev").setPassword("dev-pass");
+        groupConfig.setName("dev");
 
         final JoinConfig joinConfig = config.getNetworkConfig().getJoin();
         joinConfig.getMulticastConfig().setEnabled(false);
