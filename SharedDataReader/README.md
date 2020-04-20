@@ -23,7 +23,7 @@ This example shows the use of `Shared Data` via `Asynchronous Shared Maps` in Ve
 
 ## To compile
 ```bash
-mvn celan install
+mvn clean install
 ```
 
 ## To run
