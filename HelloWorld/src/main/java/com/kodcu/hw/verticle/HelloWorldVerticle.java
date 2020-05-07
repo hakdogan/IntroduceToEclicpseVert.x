@@ -22,7 +22,7 @@ public class HelloWorldVerticle extends AbstractVerticle
                 .putHeader("content-type", "text/html; charset=utf-8")
                 .end("Hello from Vert.x application")).listen(config().getInteger("http.port", 8080), result -> {
                     if (result.succeeded()) {
-                        log.info("HTTP server running on port {} ", 8080);
+                        log.info("HTTP server running on port {} ", config().getInteger("http.port", 8080));
                         promise.complete();
                     } else {
                         log.error("Could not start a HTTP server", result.cause());
