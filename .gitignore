@@ -1,9 +1,12 @@
 .DS_Store
 .idea/
-.vertx
+.vertx/
 *.iml
 *.war
 *.jar
 *.log
 log/
 target/
+mods/
+modularjars/
+dependencies/

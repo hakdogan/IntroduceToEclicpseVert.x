@@ -22,24 +22,16 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <vertx.version>3.9.0</vertx.version>
-        <lombok.version>1.18.10</lombok.version>
         <junit.version>4.12</junit.version>
         <soapui.version>5.5.0</soapui.version>
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
     </properties>
 
     <modules>
-        <module>HelloWorld</module>
-        <module>Messenger</module>
-        <module>Sender</module>
-        <module>Receiver</module>
-        <module>Util</module>
-        <module>WorkerVerticle</module>
-        <module>Helper</module>
-        <module>Entity</module>
-        <module>LocalDataSharing</module>
-        <module>SharedDataProvider</module>
-        <module>SharedDataReader</module>
-        <module>Routing</module>
+        <module>helloworld</module>
+        <module>util</module>
+        <module>entity</module>
     </modules>
 
     <dependencies>
@@ -66,45 +58,36 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.smartbear.soapui</groupId>
             <artifactId>soapui-maven-plugin</artifactId>
             <version>${soapui.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.smartbear.soapui</groupId>
             <artifactId>soapui</artifactId>
             <version>${soapui.version}</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
-
+<!--
     <repositories>
         <repository>
             <id>smartbear</id>
             <name>smartbear repository</name>
             <url>http://smartbearsoftware.com/repository/maven2</url>
         </repository>
-    </repositories>
+    </repositories>-->
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <release>14</release>
+                    <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
@@ -163,6 +146,23 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.2</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>../dependencies</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
