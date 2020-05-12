@@ -4,6 +4,8 @@ This simple application shows how to create an HTTP server and how to write to r
 ## Requirements
 * JDK 14
 * Maven 3.0.0 or later
+* Maven compiler plugin 3.8.0 or later
+* Maven surefire plugin 
 
 ## To compile
 ```bash
