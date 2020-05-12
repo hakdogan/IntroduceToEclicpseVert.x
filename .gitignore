@@ -5,8 +5,9 @@
 *.war
 *.jar
 *.log
+classpath/
 log/
-target/
 mods/
 modularjars/
-dependencies/
+modules/
+target/

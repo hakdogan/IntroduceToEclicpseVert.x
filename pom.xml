@@ -32,6 +32,7 @@
         <module>helloworld</module>
         <module>util</module>
         <module>entity</module>
+        <module>helper</module>
     </modules>
 
     <dependencies>
@@ -58,7 +59,7 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>com.smartbear.soapui</groupId>
             <artifactId>soapui-maven-plugin</artifactId>
             <version>${soapui.version}</version>
@@ -68,16 +69,16 @@
             <groupId>com.smartbear.soapui</groupId>
             <artifactId>soapui</artifactId>
             <version>${soapui.version}</version>
-        </dependency>-->
+        </dependency>
     </dependencies>
-<!--
+
     <repositories>
         <repository>
             <id>smartbear</id>
             <name>smartbear repository</name>
             <url>http://smartbearsoftware.com/repository/maven2</url>
         </repository>
-    </repositories>-->
+    </repositories>
 
     <build>
         <plugins>
@@ -161,7 +162,54 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>../dependencies</outputDirectory>
+                            <outputDirectory>../classpath</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>io.vertx</groupId>
+                                    <artifactId>vertx-core</artifactId>
+                                    <version>${vertx.version}</version>
+                                    <outputDirectory>../modules</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>io.vertx</groupId>
+                                    <artifactId>vertx-web</artifactId>
+                                    <version>${vertx.version}</version>
+                                    <outputDirectory>../modules</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>io.vertx</groupId>
+                                    <artifactId>vertx-hazelcast</artifactId>
+                                    <version>${vertx.version}</version>
+                                    <outputDirectory>../modules</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.hazelcast</groupId>
+                                    <artifactId>hazelcast</artifactId>
+                                    <version>3.12.7</version>
+                                    <outputDirectory>../modules</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.smartbear.soapui</groupId>
+                                    <artifactId>soapui</artifactId>
+                                    <version>${soapui.version}</version>
+                                    <outputDirectory>../modules</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>xmlbeans</groupId>
+                                    <artifactId>xbean</artifactId>
+                                    <version>fixed-2.4.0</version>
+                                    <outputDirectory>../modules</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
                         </configuration>
                     </execution>
                 </executions>
