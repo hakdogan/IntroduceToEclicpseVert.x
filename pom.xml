@@ -24,6 +24,7 @@
         <vertx.version>3.9.0</vertx.version>
         <junit.version>4.12</junit.version>
         <soapui.version>5.5.0</soapui.version>
+        <netty.version>4.1.48.Final</netty.version>
         <maven.compiler.release>14</maven.compiler.release>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
@@ -34,6 +35,7 @@
         <module>util</module>
         <module>entity</module>
         <module>helper</module>
+        <module>messenger</module>
     </modules>
 
     <dependencies>

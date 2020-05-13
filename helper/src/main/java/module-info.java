@@ -10,4 +10,5 @@ module helper
     requires com.hazelcast.core;
     requires soapui;
     requires util;
+    exports com.kodcu.helper;
 }
