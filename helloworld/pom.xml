@@ -23,6 +23,11 @@
             <artifactId>util</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>kodcu</groupId>
+            <artifactId>helper</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -52,6 +57,24 @@
                                     <groupId>io.vertx</groupId>
                                     <artifactId>vertx-core</artifactId>
                                     <version>${vertx.version}</version>
+                                    <outputDirectory>modules</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>io.vertx</groupId>
+                                    <artifactId>vertx-web</artifactId>
+                                    <version>${vertx.version}</version>
+                                    <outputDirectory>modules</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>io.vertx</groupId>
+                                    <artifactId>vertx-hazelcast</artifactId>
+                                    <version>${vertx.version}</version>
+                                    <outputDirectory>modules</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.hazelcast</groupId>
+                                    <artifactId>hazelcast</artifactId>
+                                    <version>3.12.2</version>
                                     <outputDirectory>modules</outputDirectory>
                                 </artifactItem>
                                 <artifactItem>
@@ -124,6 +147,12 @@
                                     <groupId>io.netty</groupId>
                                     <artifactId>netty-transport</artifactId>
                                     <version>${netty.version}</version>
+                                    <outputDirectory>modules</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.smartbear.soapui</groupId>
+                                    <artifactId>soapui</artifactId>
+                                    <version>${soapui.version}</version>
                                     <outputDirectory>modules</outputDirectory>
                                 </artifactItem>
                             </artifactItems>

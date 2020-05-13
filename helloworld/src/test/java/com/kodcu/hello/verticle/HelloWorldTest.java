@@ -1,5 +1,6 @@
 package com.kodcu.hello.verticle;
 
+import com.kodcu.helper.RandomPortHelper;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
@@ -13,9 +14,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import javax.net.ssl.SSLServerSocketFactory;
 import java.io.IOException;
-import java.net.ServerSocket;
 
 import static com.kodcu.util.Constants.*;
 
@@ -40,7 +39,7 @@ public class HelloWorldTest
     @Before
     public void setup(TestContext testContext) throws IOException {
         vertx = Vertx.vertx();
-        port = HelloWorldTest.getRandomLocalPort();
+        port = RandomPortHelper.getRandomLocalPort();
         DeploymentOptions options = new DeploymentOptions().setConfig(new JsonObject().put("http.port", port));
         vertx.deployVerticle(HelloWorldVerticle.class.getName(), options, testContext.asyncAssertSuccess());
     }
@@ -71,14 +70,5 @@ public class HelloWorldTest
                         testContext.fail(req.cause());
                     }
                 });
-    }
-
-    public static int getRandomLocalPort(){
-        try (ServerSocket socket = SSLServerSocketFactory.getDefault().createServerSocket(0); ){
-            return socket.getLocalPort();
-        } catch (Exception ex) {
-            LOGGER.error("An exception was thrown in getRandomLocalPort method! " + ex);
-        }
-        return 0;
     }
 }

@@ -5,6 +5,7 @@
 module helloworld
 {
     requires vertx.core;
+    requires helper;
     requires util;
     exports com.kodcu.hello.verticle to vertx.core;
 }
