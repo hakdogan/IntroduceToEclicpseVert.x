@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 
-#mvn clean install
+chmod a+x ../util/compile.sh
+chmod a+x ../util/modularJar.sh
 
-mkdir -p ../mods/util
-mkdir -p ../mods/helloworld
+../util/compile.sh
+../util/modularJar.sh
 
-javac -d ../mods/util \
-../util/src/main/java/module-info.java \
-../util/src/main/java/com/kodcu/util/Constants.java
+mvn clean install
 
-javac -d ../mods/helloworld \
---module-path ../mods:../modules \
+javac -d ../mods/helloworld --enable-preview --source 14 \
+--module-path ../mods:modules \
 src/main/java/module-info.java \
 src/main/java/com/kodcu/hello/main/Starter.java \
 src/main/java/com/kodcu/hello/verticle/HelloWorldVerticle.java

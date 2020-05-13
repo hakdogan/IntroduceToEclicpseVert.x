@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-java -p ../modularjars:../modules -m helloworld
+java --enable-preview -p ../modularjars:modules -m helloworld
