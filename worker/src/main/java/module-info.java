@@ -1,11 +1,12 @@
 /**
  * @author hakdogan (hakdogan@kodcu.com)
- * Created on 13.05.2020
+ * Created on 14.05.2020
  **/
-module messenger
+module worker
 {
     requires vertx.core;
     requires vertx.web;
     requires helper;
-    exports com.kodcu.nonclustered.messenger.verticle to vertx.core;
+    requires util;
+    exports com.kodcu.worker.verticle to vertx.core;
 }

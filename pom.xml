@@ -36,6 +36,7 @@
         <module>entity</module>
         <module>helper</module>
         <module>messenger</module>
+        <module>worker</module>
     </modules>
 
     <dependencies>

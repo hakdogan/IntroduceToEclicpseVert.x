@@ -9,6 +9,6 @@ module helper
     requires vertx.hazelcast;
     requires com.hazelcast.core;
     requires soapui;
-    requires util;
+    requires transitive util;
     exports com.kodcu.helper;
 }

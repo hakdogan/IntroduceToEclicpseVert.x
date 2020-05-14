@@ -16,7 +16,7 @@ public class Constants {
     public static final String PATH_PARAM_TO_SAVE_WORD = "word";
     public static final String ADDRESS = "kodcu.com";
     public static final String DEFAULT_REPLY_MESSAGE = "message received";
-    public static final String FILE_NAME = "word.txt";
+    public static final String FILE_NAME = "src/main/resources/word.txt";
     public static final String DEFAULT_LOCAL_MAP_NAME = "myLocalMap";
     public static final String DEFAULT_ASYNC_MAP_NAME = "myAsyncMap";
     public static final String DEFAULT_ASYNC_MAP_KEY = "actualData";
