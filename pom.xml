@@ -37,6 +37,8 @@
         <module>helper</module>
         <module>messenger</module>
         <module>worker</module>
+        <module>sender</module>
+        <module>receiver</module>
     </modules>
 
     <dependencies>
