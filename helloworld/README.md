@@ -1,5 +1,5 @@
-# HelloWorld
-This simple application shows how to create an HTTP server and how to write to response.
+# Hello World Module
+The simple application in this module shows how to create an HTTP server and how to write to response.
 
 ## Requirements
 * JDK 14

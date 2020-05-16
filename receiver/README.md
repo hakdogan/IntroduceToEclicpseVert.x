@@ -1,6 +1,6 @@
-# Clustered Receiver
+# Clustered Receiver Module
 
-This example shows the use of `broadcasting messaging` in the `clustered environment`. The receiver verticle receives messages from the publisher that it's subscribed to.
+This example in this module shows the use of `broadcasting messaging` in the `clustered environment`. The receiver verticle receives messages from the publisher that it's subscribed to.
 
 ```java
     @Override

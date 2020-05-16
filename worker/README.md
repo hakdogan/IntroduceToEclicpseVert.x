@@ -1,6 +1,6 @@
-# Worker Verticle
+# Worker Module
 
-This example shows the use of `worker verticle`. A word you send with the `HTTP Post` request over the `http://localhost:8080/get/:message` is saved to a text file that's located under `recources` directory.
+This example in this module shows the use of `Worker Verticle`. A word you send with the `HTTP Post` request over the `http://localhost:8080/get/:message` is saved to a text file that's located under `recources` directory.
                                                  
 ```java
    final Vertx vertx = Vertx.vertx();
