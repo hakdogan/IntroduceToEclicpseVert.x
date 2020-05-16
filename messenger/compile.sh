@@ -5,7 +5,7 @@
 mvn clean install
 
 javac -d ../mods/messenger --enable-preview --source 14 \
---module-path ../mods:modules \
+--module-path ../mods:../helper/modules \
 src/main/java/module-info.java \
 src/main/java/com/kodcu/nonclustered/messenger/verticle/MessengerLauncher.java \
 src/main/java/com/kodcu/nonclustered/messenger/verticle/ReceiverVerticle.java \

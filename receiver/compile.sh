@@ -5,7 +5,7 @@
 mvn clean install
 
 javac -d ../mods/receiver --enable-preview --source 14 \
---module-path ../mods:modules \
+--module-path ../mods:../helper/modules:modules \
 src/main/java/module-info.java \
 src/main/java/com/kodcu/clustered/receiver/verticle/ClusteredReceiver.java \
 src/main/java/com/kodcu/clustered/receiver/main/Starter.java

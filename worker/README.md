@@ -33,7 +33,7 @@ sh modularJar.sh
 
 ## To run
 ```bash
-java --enable-preview -p ../modularjars:modules -m worker
+java --enable-preview -p ../modularjars:../helper/modules -m worker
 ```
 Or
 

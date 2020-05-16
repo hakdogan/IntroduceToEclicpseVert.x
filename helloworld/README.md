@@ -19,7 +19,7 @@ sh modularJar.sh
 
 ## To run
 ```bash
-java -p ../modularjars:../dependencies -m helloworld
+java --enable-preview -p ../modularjars:../helper/modules -m helloworld
 ```
 Or
 

@@ -54,7 +54,7 @@ sh modularJar.sh
 
 ## To run
 ```bash
-java --enable-preview -p ../modularjars:modules -m messenger
+java --enable-preview -p ../modularjars:../helper/modules -m messenger
 ```
 Or
 
