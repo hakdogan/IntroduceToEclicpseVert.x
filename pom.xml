@@ -39,6 +39,7 @@
         <module>worker</module>
         <module>sender</module>
         <module>receiver</module>
+        <module>local.shared.maps</module>
     </modules>
 
     <dependencies>

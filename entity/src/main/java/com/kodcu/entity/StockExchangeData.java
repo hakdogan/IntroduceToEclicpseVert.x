@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created on 17.10.2018
  */
 
-record StockExchangeData(String name, int rate) implements Serializable
+public record StockExchangeData(String name, int rate) implements Serializable
 {
     StockExchangeData(){
         this("", 0);

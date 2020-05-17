@@ -10,7 +10,7 @@ import java.util.List;
  * Created on 13.10.2018
  */
 
-record StockExchange(String time, List<StockExchangeData> dataList) implements Serializable
+public record StockExchange(String time, List<StockExchangeData> dataList) implements Serializable
 {
     public StockExchange(){
         this("", List.of());

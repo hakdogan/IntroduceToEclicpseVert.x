@@ -7,4 +7,4 @@ import java.io.Serializable;
  * Created on 2019-05-25
  */
 
-record Bucket(String bucketKey, long token) implements Serializable {}
+public record Bucket(String bucketKey, long token) implements Serializable {}
