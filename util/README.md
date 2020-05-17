@@ -3,7 +3,7 @@
 This module contains some constants used by other modules in this repository.
 
 ## Requirements
-* JDK 14
+* JDK 9 or later
 * Maven 3.0.0 or later
 * Maven compiler plugin 3.8.0 or later
 

@@ -4,7 +4,7 @@
 
 mvn clean install
 
-javac -d ../mods/sender --enable-preview --source 14 \
+javac -d ../mods/sender \
 --module-path ../mods:../helper/modules:modules \
 src/main/java/module-info.java \
 src/main/java/com/kodcu/clustered/sender/verticle/ClusteredSender.java \

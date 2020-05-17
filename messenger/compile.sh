@@ -4,7 +4,7 @@
 
 mvn clean install
 
-javac -d ../mods/messenger --enable-preview --source 14 \
+javac -d ../mods/messenger \
 --module-path ../mods:../helper/modules \
 src/main/java/module-info.java \
 src/main/java/com/kodcu/nonclustered/messenger/verticle/MessengerLauncher.java \

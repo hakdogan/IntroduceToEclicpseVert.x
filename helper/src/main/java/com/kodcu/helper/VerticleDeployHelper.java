@@ -5,6 +5,8 @@ import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 import io.vertx.core.spi.cluster.ClusterManager;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * @author hakdogan (hakdogan@kodcu.com)
  * Created on 9.10.2018
@@ -42,6 +44,7 @@ public class VerticleDeployHelper
      * @param className
      * @return
      */
+    @SuppressWarnings("unchecked")
     public static Promise<Void> deployHelper(final ClusterManager manager, final String className){
 
         final Promise<Void> promise = Promise.promise();
@@ -51,7 +54,8 @@ public class VerticleDeployHelper
         Vertx.clusteredVertx(options, cluster -> {
             if (cluster.succeeded()) {
                 try {
-                    cluster.result().deployVerticle((Verticle) Class.forName(className).newInstance(), res -> {
+                    final Class clazz = Class.forName(className);
+                    cluster.result().deployVerticle((Verticle) clazz.getDeclaredConstructor().newInstance(), res -> {
                         if(res.succeeded()){
                             LOGGER.info("Deployment id is " + res.result());
                             promise.complete();
@@ -60,7 +64,7 @@ public class VerticleDeployHelper
                             promise.fail(res.cause());
                         }
                     });
-                } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+                } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e) {
                     LOGGER.error("Verticle deploy failed! " + e);
                 }
             } else {

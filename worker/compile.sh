@@ -4,7 +4,7 @@
 
 mvn clean install
 
-javac -d ../mods/worker --enable-preview --source 14 \
+javac -d ../mods/worker \
 --module-path ../mods:../helper/modules \
 src/main/java/module-info.java \
 src/main/java/com/kodcu/worker/verticle/WorkerVerticle.java \

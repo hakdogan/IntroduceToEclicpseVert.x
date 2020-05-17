@@ -2,7 +2,7 @@
 
 mvn clean install
 
-javac -d ../mods/entity --enable-preview --source 14 \
+javac -d ../mods/entity \
 --module-path modules \
 src/main/java/module-info.java \
 src/main/java/com/kodcu/entity/Bucket.java \

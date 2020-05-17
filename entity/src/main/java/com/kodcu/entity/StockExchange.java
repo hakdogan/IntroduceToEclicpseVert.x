@@ -10,9 +10,31 @@ import java.util.List;
  * Created on 13.10.2018
  */
 
-public record StockExchange(String time, List<StockExchangeData> dataList) implements Serializable
+public class StockExchange implements Serializable
 {
-    public StockExchange(){
-        this("", List.of());
+    private String time;
+    private List<StockExchangeData> dataList;
+
+    public StockExchange(){}
+
+    public StockExchange(String time, List<StockExchangeData> dataList) {
+        this.time = time;
+        this.dataList = dataList;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public List<StockExchangeData> getDataList() {
+        return dataList;
+    }
+
+    public void setDataList(List<StockExchangeData> dataList) {
+        this.dataList = dataList;
     }
 }

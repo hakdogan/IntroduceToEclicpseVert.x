@@ -7,4 +7,32 @@ import java.io.Serializable;
  * Created on 2019-05-25
  */
 
-public record Bucket(String bucketKey, long token) implements Serializable {}
+public class Bucket implements Serializable
+{
+
+    private String bucketKey;
+    private long token;
+
+    public Bucket(){}
+
+    public Bucket(String bucketKey, long token) {
+        this.bucketKey = bucketKey;
+        this.token = token;
+    }
+
+    public String getBucketKey() {
+        return bucketKey;
+    }
+
+    public void setBucketKey(String bucketKey) {
+        this.bucketKey = bucketKey;
+    }
+
+    public long getToken() {
+        return token;
+    }
+
+    public void setToken(long token) {
+        this.token = token;
+    }
+}

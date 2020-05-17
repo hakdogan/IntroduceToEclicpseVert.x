@@ -4,7 +4,7 @@
 
 mvn clean install
 
-javac -d ../mods/local.shared.maps --enable-preview --source 14 \
+javac -d ../mods/local.shared.maps \
 --module-path ../mods:../entity/modules:../helper/modules \
 src/main/java/module-info.java \
 src/main/java/com/kodcu/local/shared/maps/main/Starter.java \

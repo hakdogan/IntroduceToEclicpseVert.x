@@ -4,7 +4,7 @@
 
 mvn clean install
 
-javac -d ../mods/helloworld --enable-preview --source 14 \
+javac -d ../mods/helloworld \
 --module-path ../mods:../helper/modules \
 src/main/java/module-info.java \
 src/main/java/com/kodcu/hello/main/Starter.java \

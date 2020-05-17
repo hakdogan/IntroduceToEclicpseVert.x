@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-javac -d ../mods/util --enable-preview --source 14 \
+mvn clean install
+
+javac -d ../mods/util \
 $(dirname "$0")/src/main/java/module-info.java \
 $(dirname "$0")/src/main/java/com/kodcu/util/Constants.java

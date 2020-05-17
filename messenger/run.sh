@@ -2,4 +2,4 @@
 
 #make sure the compile and modularJar sh files are executed before running this script
 
-java --enable-preview -p ../modularjars:../helper/modules -m messenger
+java -p ../modularjars:../helper/modules -m messenger

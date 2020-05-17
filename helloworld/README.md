@@ -2,10 +2,9 @@
 The simple application in this module shows how to create an HTTP server and how to write to response.
 
 ## Requirements
-* JDK 14
+* JDK 9 or later
 * Maven 3.0.0 or later
 * Maven compiler plugin 3.8.0 or later
-* Maven surefire plugin 
 
 ## To compile
 ```bash
@@ -19,7 +18,7 @@ sh modularJar.sh
 
 ## To run
 ```bash
-java --enable-preview -p ../modularjars:../helper/modules -m helloworld
+java -p ../modularjars:../helper/modules -m helloworld
 ```
 Or
 
