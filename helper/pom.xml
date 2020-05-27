@@ -28,25 +28,7 @@
             <artifactId>util</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.smartbear.soapui</groupId>
-            <artifactId>soapui-maven-plugin</artifactId>
-            <version>${soapui.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.smartbear.soapui</groupId>
-            <artifactId>soapui</artifactId>
-            <version>${soapui.version}</version>
-        </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>smartbear</id>
-            <name>smartbear repository</name>
-            <url>http://smartbearsoftware.com/repository/maven2</url>
-        </repository>
-    </repositories>
 
     <build>
         <plugins>
@@ -157,12 +139,6 @@
                                     <groupId>io.netty</groupId>
                                     <artifactId>netty-transport</artifactId>
                                     <version>${netty.version}</version>
-                                    <outputDirectory>modules</outputDirectory>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>com.smartbear.soapui</groupId>
-                                    <artifactId>soapui</artifactId>
-                                    <version>${soapui.version}</version>
                                     <outputDirectory>modules</outputDirectory>
                                 </artifactItem>
                             </artifactItems>

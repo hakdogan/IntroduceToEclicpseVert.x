@@ -1,16 +1,19 @@
-package com.kodcu.helper;
+package com.kodcu.routing.utility;
 
 import com.eviware.soapui.model.testsuite.TestStep;
+import com.eviware.soapui.support.xml.XmlObjectConfigurationBuilder;
+import org.apache.xmlbeans.XmlObject;
+
 import java.util.List;
 
 /**
  * @author hakdogan (hakdogan@kodcu.com)
- * Created on 2019-05-02
- */
+ * Created on 27.05.2020
+ **/
 
-public class SoapUIHelper
+public class SoapUIUtility
 {
-    private SoapUIHelper(){}
+    private SoapUIUtility(){}
 
     /**
      *
@@ -28,11 +31,10 @@ public class SoapUIHelper
      * @param randomFactor
      * @return
      */
-    /*
     public static XmlObject getLoadTestConfiguration(final int testDelay, final int randomFactor){
         XmlObjectConfigurationBuilder builder = new XmlObjectConfigurationBuilder();
         return builder.add("testDelay", testDelay).add("randomFactor", randomFactor).finish();
-    }*/
+    }
 
     public static int getMilisecond(){
         return (int) System.currentTimeMillis() % 1000;

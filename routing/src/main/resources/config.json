@@ -1,0 +1,5 @@
+{
+  "circuitbreaker": false,
+  "bucketKey": "testApp",
+  "ratelimit": 30
+}

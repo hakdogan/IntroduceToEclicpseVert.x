@@ -8,7 +8,6 @@ module helper
     requires vertx.web;
     requires vertx.hazelcast;
     requires com.hazelcast.core;
-    requires soapui;
     requires transitive util;
     exports com.kodcu.helper;
 }
