@@ -4,8 +4,8 @@
  **/
 module messenger
 {
-    requires vertx.core;
-    requires vertx.web;
+    requires io.vertx.core;
+    requires io.vertx.web;
     requires helper;
-    exports com.kodcu.nonclustered.messenger.verticle to vertx.core;
+    exports com.kodcu.nonclustered.messenger.verticle to io.vertx.core;
 }

@@ -66,7 +66,7 @@
                                 <artifactItem>
                                     <groupId>com.hazelcast</groupId>
                                     <artifactId>hazelcast</artifactId>
-                                    <version>3.12.2</version>
+                                    <version>${hazelcast.version}</version>
                                     <outputDirectory>modules</outputDirectory>
                                 </artifactItem>
                                 <artifactItem>

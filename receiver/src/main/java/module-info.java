@@ -4,8 +4,8 @@
  **/
 module receiver
 {
-    requires vertx.core;
-    requires vertx.hazelcast;
+    requires io.vertx.core;
+    requires io.vertx.clustermanager.hazelcast;
     requires helper;
     requires java.transaction.xa;
     requires com.fasterxml.jackson.databind;

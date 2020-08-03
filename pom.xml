@@ -21,10 +21,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vertx.version>3.9.1</vertx.version>
+        <vertx.version>4.0.0.Beta1</vertx.version>
         <junit.version>4.12</junit.version>
         <soapui.version>5.5.0</soapui.version>
         <netty.version>4.1.49.Final</netty.version>
+        <hazelcast.version>4.0.2</hazelcast.version>
         <maven.compiler.release>14</maven.compiler.release>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>

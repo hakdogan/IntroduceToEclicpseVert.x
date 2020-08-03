@@ -4,9 +4,8 @@
  **/
 module helper
 {
-    requires vertx.core;
-    requires vertx.web;
-    requires vertx.hazelcast;
+    requires io.vertx.core;
+    requires io.vertx.web;
     requires com.hazelcast.core;
     requires transitive util;
     exports com.kodcu.helper;

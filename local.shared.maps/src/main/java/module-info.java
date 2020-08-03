@@ -4,10 +4,10 @@
  **/
 module local.shared.maps
 {
-    requires vertx.core;
-    requires vertx.web;
+    requires io.vertx.core;
+    requires io.vertx.web;
     requires entity;
     requires helper;
 
-    exports com.kodcu.local.shared.maps.verticle to vertx.core;
+    exports com.kodcu.local.shared.maps.verticle to io.vertx.core;
 }
