@@ -49,9 +49,9 @@ public class WriterTest
     @Test
     public void httpServerTest(TestContext testContext) {
         final Async async = testContext.async();
-        vertx.createHttpClient().getNow(DEFAULT_HTTP_PORT, DEFAULT_HOSTNAME, "/",
+        vertx.createHttpClient().get(DEFAULT_HTTP_PORT, DEFAULT_HOSTNAME, "/",
                 response -> {
-                    response.handler(responseBody -> {
+                    response.result().handler(responseBody -> {
                         testContext.assertTrue(responseBody.toString().contains("Hello from Worker Verticle example!"));
                         async.complete();
                     });
