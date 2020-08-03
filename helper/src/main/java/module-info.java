@@ -8,5 +8,6 @@ module helper
     requires io.vertx.web;
     requires com.hazelcast.core;
     requires transitive util;
+    requires transitive org.slf4j;
     exports com.kodcu.helper;
 }

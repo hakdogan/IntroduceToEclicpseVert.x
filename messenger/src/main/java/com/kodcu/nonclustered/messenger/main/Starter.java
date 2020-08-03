@@ -5,8 +5,8 @@ package com.kodcu.nonclustered.messenger.main;
 
 import com.kodcu.nonclustered.messenger.verticle.MessengerLauncher;
 import io.vertx.core.Vertx;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Starter
 {
@@ -20,7 +20,7 @@ public class Starter
         final Vertx vertx = Vertx.vertx();
         vertx.deployVerticle(new MessengerLauncher(), res -> {
             if(res.succeeded()){
-                LOGGER.info("Deployment id is: " + res.result());
+                LOGGER.info("Deployment id is {}", res.result());
             } else {
                 LOGGER.error("Deployment failed!");
             }

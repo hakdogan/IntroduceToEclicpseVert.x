@@ -9,8 +9,8 @@ import com.kodcu.helper.RouterHelper;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.eventbus.EventBus;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import static com.kodcu.util.Constants.*;
@@ -40,8 +40,8 @@ public class ClusteredSender extends AbstractVerticle
         final EventBus eventBus = vertx.eventBus();
         final String message = routingContext.request().getParam(PATH_PARAM_TO_RECEIVE_MESSAGE);
         eventBus.publish(ADDRESS, message);
-        logger.info("Current Thread Id " +
-                Thread.currentThread().getId() + " Is Clustered  " + vertx.isClustered());
+        logger.info("Current Thread Id {} Is Clustered {} ",
+                Thread.currentThread().getId(), vertx.isClustered());
         routingContext.response().end(message);
     }
 }

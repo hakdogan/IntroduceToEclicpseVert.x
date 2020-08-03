@@ -6,8 +6,8 @@ package com.kodcu.nonclustered.messenger.verticle;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.eventbus.EventBus;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.kodcu.util.Constants.*;
 
@@ -19,7 +19,7 @@ public class ReceiverVerticle extends AbstractVerticle
     public void start() {
         final EventBus eventBus = vertx.eventBus();
         eventBus.consumer(ADDRESS, receivedMessage -> {
-            logger.debug("Received message: " + receivedMessage.body());
+            logger.debug("Received message: {}", receivedMessage.body());
             receivedMessage.reply(DEFAULT_REPLY_MESSAGE);
         });
 

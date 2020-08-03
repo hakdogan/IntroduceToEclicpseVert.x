@@ -3,9 +3,8 @@ package com.kodcu.worker.main;
 import com.kodcu.worker.verticle.WorkerVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import static com.kodcu.util.Constants.DEFAULT_WORKER_POOL_SIZE;
 
 /**
@@ -27,9 +26,9 @@ public class Starter
                 .setWorkerPoolSize(DEFAULT_WORKER_POOL_SIZE);
         vertx.deployVerticle(new WorkerVerticle(), options, res -> {
             if (res.succeeded()) {
-                LOGGER.info("Deployment id is: " + res.result());
+                LOGGER.info("Deployment id is: {}", res.result());
             } else {
-                LOGGER.info("Deployment failed! " + res.cause());
+                LOGGER.info("Deployment failed! ", res.cause());
             }
         });
     }

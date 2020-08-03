@@ -6,8 +6,8 @@ package com.kodcu.clustered.receiver.verticle;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.eventbus.EventBus;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.kodcu.util.Constants.ADDRESS;
 
@@ -18,7 +18,7 @@ public class ClusteredReceiver extends AbstractVerticle {
     @Override
     public void start() {
         final EventBus eventBus = vertx.eventBus();
-        eventBus.consumer(ADDRESS, receivedMessage -> logger.info("Received message: " + receivedMessage.body()));
+        eventBus.consumer(ADDRESS, receivedMessage -> logger.info("Received message: {}", receivedMessage.body()));
         logger.info("Receiver ready!");
     }
 }

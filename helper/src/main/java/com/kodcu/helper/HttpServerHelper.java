@@ -3,8 +3,8 @@ package com.kodcu.helper;
 import io.vertx.core.Promise;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import io.vertx.ext.web.Router;
 import static com.kodcu.util.Constants.*;
 
@@ -42,10 +42,10 @@ public class HttpServerHelper
         vertx.createHttpServer().requestHandler(router)
                 .listen(config.getInteger("http.port", port), result -> {
                     if (result.succeeded()) {
-                        LOGGER.info("HTTP server running on port " + port);
+                        LOGGER.info("HTTP server running on port {}", port);
                         promise.complete();
                     } else {
-                        LOGGER.error("Could not start a HTTP server " + result.cause());
+                        LOGGER.error("Could not start a HTTP server ", result.cause());
                         promise.fail(result.cause());
                     }
                 });

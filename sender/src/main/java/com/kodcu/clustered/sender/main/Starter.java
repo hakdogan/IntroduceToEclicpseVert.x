@@ -8,8 +8,8 @@ import com.kodcu.clustered.sender.verticle.ClusteredSender;
 import com.kodcu.helper.ClusterConfiguratorHelper;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import io.vertx.core.spi.cluster.ClusterManager;
 import io.vertx.spi.cluster.hazelcast.HazelcastClusterManager;
 
@@ -28,13 +28,13 @@ public class Starter
             if (cluster.succeeded()) {
                 cluster.result().deployVerticle(new ClusteredSender(), res -> {
                     if(res.succeeded()){
-                        LOGGER.info("Deployment id is: " + res.result());
+                        LOGGER.info("Deployment id is: {}", res.result());
                     } else {
                         LOGGER.error("Deployment failed!");
                     }
                 });
             } else {
-                LOGGER.error("Cluster up failed: " + cluster.cause());
+                LOGGER.error("Cluster up failed: ", cluster.cause());
             }
         });
     }

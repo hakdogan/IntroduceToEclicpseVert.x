@@ -4,8 +4,8 @@ import com.kodcu.helper.HttpServerHelper;
 import com.kodcu.helper.RouterHelper;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import java.nio.file.Files;
@@ -47,7 +47,7 @@ public class WorkerVerticle extends AbstractVerticle
         try {
             Path path = Paths.get(FILE_NAME);
             Files.writeString(path, message, StandardOpenOption.TRUNCATE_EXISTING);
-            logger.info("The word was written: " + message);
+            logger.info("The word was written: {}", message);
             routingContext.response().end(message);
         }catch (Exception ex){
             logger.error("Failed to save word!");

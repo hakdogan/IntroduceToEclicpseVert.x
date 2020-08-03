@@ -4,8 +4,6 @@ import com.kodcu.helper.RandomPortHelper;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
 import io.vertx.ext.unit.junit.VertxUnitRunner;
@@ -14,8 +12,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import java.io.IOException;
-
 import static com.kodcu.util.Constants.*;
 
 
@@ -27,8 +23,6 @@ import static com.kodcu.util.Constants.*;
 @RunWith(VertxUnitRunner.class)
 public class HelloWorldTest
 {
-
-    private final static Logger LOGGER = LoggerFactory.getLogger(HelloWorldTest.class);
     private Vertx vertx;
     private int port;
 
@@ -37,7 +31,7 @@ public class HelloWorldTest
      * @param testContext
      */
     @Before
-    public void setup(TestContext testContext) throws IOException {
+    public void setup(TestContext testContext) {
         vertx = Vertx.vertx();
         port = RandomPortHelper.getRandomLocalPort();
         DeploymentOptions options = new DeploymentOptions().setConfig(new JsonObject().put("http.port", port));

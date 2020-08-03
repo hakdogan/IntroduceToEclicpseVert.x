@@ -6,14 +6,15 @@ package com.kodcu.hello.verticle;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import static com.kodcu.util.Constants.DEFAULT_HTTP_PORT;
 
 public class HelloWorldVerticle extends AbstractVerticle
 {
-    private Logger logger = LoggerFactory.getLogger(HelloWorldVerticle.class);
+    private final Logger logger = LoggerFactory.getLogger(HelloWorldVerticle.class);
     /**
      *
      * @param promise
@@ -24,10 +25,10 @@ public class HelloWorldVerticle extends AbstractVerticle
                 .putHeader("content-type", "text/html; charset=utf-8")
                 .end("Hello from Vert.x application")).listen(config().getInteger("http.port", DEFAULT_HTTP_PORT), result -> {
                     if (result.succeeded()) {
-                        logger.info("HTTP server running on port " + config().getInteger("http.port", DEFAULT_HTTP_PORT));
+                        logger.info("HTTP server running on port {}", config().getInteger("http.port", DEFAULT_HTTP_PORT));
                         promise.complete();
                     } else {
-                        logger.error("Could not start a HTTP server. " + result.cause());
+                        logger.error("Could not start a HTTP server. ", result.cause());
                         promise.fail(result.cause());
                     }
                 });

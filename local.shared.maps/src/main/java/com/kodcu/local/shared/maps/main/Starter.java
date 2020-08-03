@@ -2,8 +2,8 @@ package com.kodcu.local.shared.maps.main;
 
 import com.kodcu.local.shared.maps.verticle.SharerAndReaderLauncher;
 import io.vertx.core.Vertx;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -23,7 +23,7 @@ public class Starter
         final Vertx vertx = Vertx.vertx();
         vertx.deployVerticle(new SharerAndReaderLauncher(), res -> {
             if(res.succeeded()){
-                LOGGER.info("Deployment id is: " + res.result());
+                LOGGER.info("Deployment id is {}", res.result());
             } else {
                 LOGGER.error("Deployment failed!");
             }

@@ -6,8 +6,8 @@ package com.kodcu.hello.main;
 
 import com.kodcu.hello.verticle.HelloWorldVerticle;
 import io.vertx.core.Vertx;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Starter
 {
@@ -20,9 +20,9 @@ public class Starter
         final Vertx vertx = Vertx.vertx();
         vertx.deployVerticle(new HelloWorldVerticle(), res -> {
             if (res.succeeded()) {
-                LOGGER.info("Deployment id is " + res.result());
+                LOGGER.info("Deployment id is {}", res.result());
             } else {
-                LOGGER.info("Deploymet failed! " + res.cause());
+                LOGGER.info("Deployment failed!", res.cause());
             }
         });
     }

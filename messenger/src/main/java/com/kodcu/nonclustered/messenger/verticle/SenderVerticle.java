@@ -9,8 +9,8 @@ import com.kodcu.helper.RouterHelper;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.eventbus.EventBus;
-import io.vertx.core.logging.Logger;
-import io.vertx.core.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import static com.kodcu.util.Constants.*;
@@ -40,7 +40,7 @@ public class SenderVerticle extends AbstractVerticle
 
         eventBus.request(ADDRESS, message, reply -> {
             if (reply.succeeded()) {
-                logger.info("Received reply: " + reply.result().body());
+                logger.info("Received reply: {}", reply.result().body());
             } else {
                 logger.info("No reply");
             }

@@ -3,7 +3,6 @@ package com.kodcu.helper;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
-
 import static com.kodcu.util.Constants.CONTENT_TYPE;
 import static com.kodcu.util.Constants.HTML_PRODUCE;
 
