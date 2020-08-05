@@ -20,6 +20,16 @@
         </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
+            <artifactId>vertx-web-common</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web-templ-freemarker</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
             <artifactId>vertx-hazelcast</artifactId>
             <version>${vertx.version}</version>
         </dependency>
@@ -57,6 +67,18 @@
                                     <version>${vertx.version}</version>
                                     <outputDirectory>modules</outputDirectory>
                                 </artifactItem>
+                                <artifectItem>
+                                    <groupId>io.vertx</groupId>
+                                    <artifactId>vertx-web-common</artifactId>
+                                    <version>${vertx.version}</version>
+                                    <outputDirectory>modules</outputDirectory>
+                                </artifectItem>
+                                <artifectItem>
+                                    <groupId>io.vertx</groupId>
+                                    <artifactId>vertx-web-templ-freemarker</artifactId>
+                                    <version>${vertx.version}</version>
+                                    <outputDirectory>modules</outputDirectory>
+                                </artifectItem>
                                 <artifactItem>
                                     <groupId>io.vertx</groupId>
                                     <artifactId>vertx-hazelcast</artifactId>
