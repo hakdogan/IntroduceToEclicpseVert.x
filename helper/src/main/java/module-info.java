@@ -8,6 +8,7 @@ module helper
     requires io.vertx.web;
     requires io.vertx.web.template.freemarker;
     requires io.vertx.web.common;
+    requires com.fasterxml.jackson.core;
     requires com.hazelcast.core;
     requires transitive util;
     requires transitive org.slf4j;

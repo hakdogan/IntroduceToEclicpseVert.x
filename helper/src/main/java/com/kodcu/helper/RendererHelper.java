@@ -15,7 +15,7 @@ import static com.kodcu.util.Constants.DEFAULT_TEMPLATES_DIRECTORY;
 public class RendererHelper
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(RendererHelper.class);
-    private static FreeMarkerTemplateEngine templateEngine;
+    private static FreeMarkerTemplateEngine engine;
 
     private RendererHelper(){}
 
@@ -30,15 +30,15 @@ public class RendererHelper
     public static void callRenderPage(final JsonObject contextObject, final RoutingContext routingContext,
                                   final String templateFileName, final String produceType, final int statusCode){
 
-        templateEngine = FreeMarkerTemplateEngine.create(routingContext.vertx());
-        templateEngine.render(contextObject, DEFAULT_TEMPLATES_DIRECTORY + templateFileName, page -> {
-            if (page.succeeded()) {
+        engine = FreeMarkerTemplateEngine.create(routingContext.vertx());
+        engine.render(contextObject, DEFAULT_TEMPLATES_DIRECTORY + templateFileName, render -> {
+            if (render.succeeded()) {
                 routingContext.response().putHeader(CONTENT_TYPE, produceType)
                         .setStatusCode(statusCode)
-                        .end(page.result());
+                        .end(render.result());
             } else {
-                LOGGER.error("An exception was thrown in pageRender method!", page.cause());
-                routingContext.fail(page.cause());
+                LOGGER.error("An exception was thrown in callRenderPage method!", render.cause());
+                routingContext.fail(render.cause());
             }
         });
     }

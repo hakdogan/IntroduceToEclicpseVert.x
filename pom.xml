@@ -25,6 +25,7 @@
         <junit.version>4.12</junit.version>
         <soapui.version>5.5.0</soapui.version>
         <netty.version>4.1.49.Final</netty.version>
+        <freemarker.version>2.3.29</freemarker.version>
         <hazelcast.version>4.0.2</hazelcast.version>
         <slf4j.version>2.0.0-alpha1</slf4j.version>
         <maven.compiler.release>14</maven.compiler.release>
@@ -41,6 +42,7 @@
         <module>worker</module>
         <module>sender</module>
         <module>shared.data.reader</module>
+        <module>shared.data.provider</module>
         <module>receiver</module>
         <module>local.shared.maps</module>
         <module>routing</module>

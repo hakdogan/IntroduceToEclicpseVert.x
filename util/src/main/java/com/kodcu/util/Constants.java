@@ -20,7 +20,7 @@ public class Constants {
     public static final String DEFAULT_LOCAL_MAP_NAME = "myLocalMap";
     public static final String DEFAULT_ASYNC_MAP_NAME = "myAsyncMap";
     public static final String DEFAULT_ASYNC_MAP_KEY = "actualData";
-    public static final String DEFAULT_TEMPLATES_DIRECTORY = "templates";
+    public static final String DEFAULT_TEMPLATES_DIRECTORY = "target/classes/templates";
     public static final String CONTENT_TYPE = "content-type";
     public static final String JSON_PRODUCE = "application/json; charset=utf-8";
     public static final String HTML_PRODUCE = "text/html; charset=utf-8";
