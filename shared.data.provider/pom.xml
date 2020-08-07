@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>vertx</artifactId>
+        <groupId>kodcu</groupId>
+        <version>2.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>shared.data.provider</artifactId>
+
+    <properties>
+        <main.verticle>com.kodcu.asm.verticle.PutVerticle</main.verticle>
+        <main.class>com.kodcu.shared.data.provider.main.Starter</main.class>
+        <jar.name>asyncPutVerticle</jar.name>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>kodcu</groupId>
+            <artifactId>entity</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>kodcu</groupId>
+            <artifactId>helper</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -17,4 +17,4 @@ These articles are:
 * [How to Share Data Between Threads in Vert.x](https://medium.com/@hakdogan/how-to-share-data-between-threads-in-vert-x-afdf26dcc684)
 * [How to Call the Next Handler in Vert.x?](https://medium.com/@hakdogan/how-to-call-the-next-handler-in-vert-x-c498506c427c)
 
-You can be found `modularized` version of this repository in [this branch](https://github.com/hakdogan/IntroduceToEclicpseVert.x/tree/modularized).
+This branch contains the migrated version to `Java 9 Modularity System` of the `master branch` except for [shared data provider](https://github.com/hakdogan/IntroduceToEclicpseVert.x/tree/master/SharedDataProvider) and [reader](https://github.com/hakdogan/IntroduceToEclicpseVert.x/tree/master/SharedDataReader) maven modules. These two modules could not be modularized because they use both `vertx.web` and `vertx-web-templ-freemarker` modules and the use of the two together brings the problem of [split-packages](https://twitter.com/hakdoganhoca/status/1258710422754070531/). If you want to examine `non-moduler` version, please visit the `master branch`.
