@@ -17,4 +17,4 @@ These articles are:
 * [How to Share Data Between Threads in Vert.x](https://medium.com/@hakdogan/how-to-share-data-between-threads-in-vert-x-afdf26dcc684)
 * [How to Call the Next Handler in Vert.x?](https://medium.com/@hakdogan/how-to-call-the-next-handler-in-vert-x-c498506c427c)
 
-You can be found `modularized` version of this repository in [this branch](https://github.com/hakdogan/IntroduceToEclicpseVert.x/tree/modularized).
+The examples of this branch were developed with `Java 8`. You can be found `modularized` version of this repository in [master branch.](https://github.com/hakdogan/IntroduceToEclicpseVert.x/tree/master)
