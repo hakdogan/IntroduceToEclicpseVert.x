@@ -42,7 +42,8 @@ public class WorkerVerticle extends AbstractVerticle
      */
     private void saveWord(RoutingContext routingContext) {
 
-        final String message = routingContext.request().getParam(PATH_PARAM_TO_SAVE_WORD);
+        final String message = routingContext.request()
+                .getParam(PATH_PARAM_TO_SAVE_WORD).replaceAll("[\n|\r\t]", "_");
 
         try {
             Path path = Paths.get(FILE_NAME);
