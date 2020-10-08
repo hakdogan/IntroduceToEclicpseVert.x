@@ -3,6 +3,10 @@
 [![Build Status](https://travis-ci.org/hakdogan/IntroduceToEclicpseVert.x.svg?branch=master)](https://travis-ci.org/hakdogan/IntroduceToEclicpseVert.x)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=kodcu%3Avertx&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=kodcu%3Avertx)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=kodcu%3Avertx&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=kodcu%3Avertx)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=kodcu%3Avertx&metric=bugs)](https://sonarcloud.io/dashboard?id=kodcu%3Avertx)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=kodcu%3Avertx&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=kodcu%3Avertx)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=kodcu%3Avertx&metric=code_smells)](https://sonarcloud.io/dashboard?id=kodcu%3Avertx)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=kodcu%3Avertx&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=kodcu%3Avertx)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kodcu%3Avertx&metric=coverage)](https://sonarcloud.io/dashboard?id=kodcu%3Avertx)
 
 This repository contains the code of Vert.x examples contained in my articles published on platforms such as [kodcu.com](https://kodcu.com/author/hakdogan/), [medium](https://medium.com/@hakdogan), [dzone](https://dzone.com/users/1161493/hakdogan.html). How to run each example is described in its readme file.
